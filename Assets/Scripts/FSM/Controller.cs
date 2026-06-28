@@ -6,17 +6,20 @@ namespace FSM
     public class Controller : MonoBehaviour
     {
         public State currentState;
-        public GameObject currentTarget;
-        
-        
-        public void Update() 
+        public float stateTime;
+
+        public void Update()
         {
-            currentState.UpdateState(this); 
+            if (currentState == null) return;
+            stateTime += Time.deltaTime;
+            currentState.UpdateState(this);
         }
         public void Transition(State nextState)
         {
+            currentState.DoOnExitActions(this);
             currentState = nextState;
+            stateTime = 0f; 
+            currentState.DoOnEnterActions(this);
         }
     }
 }
-     
