@@ -5,8 +5,12 @@ namespace FSM
 {
     public class Controller : MonoBehaviour
     {
+        [Header("FSM data")]
         public State currentState;
+        public GameObject currentTarget; 
         public float stateTime;
+
+        [System.NonSerialized] public float stateTimeLimit = -1f;
 
         public void Update()
         {
@@ -18,7 +22,8 @@ namespace FSM
         {
             currentState.DoOnExitActions(this);
             currentState = nextState;
-            stateTime = 0f; 
+            stateTime = 0f;
+            stateTimeLimit = -1f;
             currentState.DoOnEnterActions(this);
         }
     }
