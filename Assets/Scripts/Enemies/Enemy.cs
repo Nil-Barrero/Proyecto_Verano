@@ -1,5 +1,5 @@
-using FSM;
+using UnityEngine;
 
-public class Enemy : Controller
+public abstract class Enemy : MonoBehaviour
 {
 }
