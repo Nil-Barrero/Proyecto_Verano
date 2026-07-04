@@ -5,6 +5,7 @@ namespace Character
 {
     public class Controller : MonoBehaviour
     {
+        public static Controller instance;
         [Header("Character Components")]
         private GameObject character;
         private Rigidbody2D rb;
@@ -15,6 +16,10 @@ namespace Character
         [SerializeField] private float moveVelocity;
         [Range(0, 1)][SerializeField] private float linearDamping;
 
+        private void Awake()
+        {
+            instance  = this;
+        }
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
