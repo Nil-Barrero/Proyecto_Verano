@@ -17,6 +17,8 @@ namespace Character
         private Vector2 velocity;
         [SerializeField] private float moveVelocity;
         [Range(0, 1)][SerializeField] private float linearDamping;
+        [SerializeField] private float jumpForce = 5.0f;
+        private bool isGrounded;
 
      [Header("Shoot & Aim Variable")]
      private Vector3 mousePos;
@@ -30,6 +32,7 @@ namespace Character
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isGrounded = true;
     }
 
     private void Update()
@@ -42,18 +45,32 @@ namespace Character
         {
             Shoot();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
     }
 
-        private void FixedUpdate()
-        {
-            Movement(move * Time.deltaTime);
-        }
+    private void FixedUpdate()
+    {
+        Movement(move * Time.deltaTime);
+    }
 
-        private void Movement(float move)
+    private void Movement(float move)
+    {
+        Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
+        rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
+    }
+
+    private void Jump()
+    {
+        if(isGrounded)
         {
-            Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
-            rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
-        }
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }      
+    }
 
     private void AimMouse()
     {

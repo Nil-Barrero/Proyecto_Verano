@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 123432610}
   - component: {fileID: 123432609}
   - component: {fileID: 123432608}
+  - component: {fileID: 123432611}
   m_Layer: 0
   m_Name: Box (2)
   m_TagString: Untagged
@@ -253,6 +254,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &123432611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123432607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a12fe15d8b1d7948bbe612b4c32b03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxhealth: 100
+  lifes: 0
+  healOnSceneChanged: 1
+  invincibilityOnDamage: 1
+  damageInvincibilityTime: 0
+  fullDamageIgnoresInvincibility: 0
+  useLifes: 1
+  autoHealOnRespawn: 1
+  respawnInvincibilityTime: 0
+  onFinalDeath: 0
+  OnAlterHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAlterLifes:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &164640611
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +431,7 @@ GameObject:
   - component: {fileID: 393386848}
   - component: {fileID: 393386847}
   - component: {fileID: 393386846}
+  - component: {fileID: 393386849}
   m_Layer: 0
   m_Name: Box (3)
   m_TagString: Untagged
@@ -521,6 +555,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &393386849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393386845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a12fe15d8b1d7948bbe612b4c32b03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxhealth: 100
+  lifes: 0
+  healOnSceneChanged: 1
+  invincibilityOnDamage: 1
+  damageInvincibilityTime: 0
+  fullDamageIgnoresInvincibility: 0
+  useLifes: 1
+  autoHealOnRespawn: 1
+  respawnInvincibilityTime: 0
+  onFinalDeath: 0
+  OnAlterHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAlterLifes:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &950574635
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,12 +673,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950574635}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1888664399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &950574639
 MonoBehaviour:
@@ -669,6 +735,7 @@ GameObject:
   - component: {fileID: 1462827302}
   - component: {fileID: 1462827301}
   - component: {fileID: 1462827300}
+  - component: {fileID: 1462827303}
   m_Layer: 0
   m_Name: Box (1)
   m_TagString: Untagged
@@ -792,6 +859,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1462827303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462827299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a12fe15d8b1d7948bbe612b4c32b03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxhealth: 100
+  lifes: 0
+  healOnSceneChanged: 1
+  invincibilityOnDamage: 1
+  damageInvincibilityTime: 0
+  fullDamageIgnoresInvincibility: 0
+  useLifes: 1
+  autoHealOnRespawn: 1
+  respawnInvincibilityTime: 0
+  onFinalDeath: 0
+  OnAlterHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAlterLifes:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1888664394
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,6 +980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveVelocity: 400
   linearDamping: 0.303
+  jumpForce: 5
 --- !u!50 &1888664397
 Rigidbody2D:
   serializedVersion: 5
@@ -966,7 +1066,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 950574638}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1928603895
@@ -980,6 +1081,7 @@ GameObject:
   - component: {fileID: 1928603898}
   - component: {fileID: 1928603897}
   - component: {fileID: 1928603896}
+  - component: {fileID: 1928603899}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -1103,11 +1205,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1928603899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928603895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a12fe15d8b1d7948bbe612b4c32b03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxhealth: 100
+  lifes: 0
+  healOnSceneChanged: 1
+  invincibilityOnDamage: 1
+  damageInvincibilityTime: 0
+  fullDamageIgnoresInvincibility: 0
+  useLifes: 1
+  autoHealOnRespawn: 1
+  respawnInvincibilityTime: 0
+  onFinalDeath: 0
+  OnAlterHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAlterLifes:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 950574638}
   - {fileID: 164640614}
   - {fileID: 1888664399}
   - {fileID: 1928603898}
