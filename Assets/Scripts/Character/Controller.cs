@@ -3,17 +3,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Controller : MonoBehaviour
+namespace Character
 {
-    [Header("Character Components")]
-    private GameObject character;
-    private Rigidbody2D rb;
+    public class Controller : MonoBehaviour
+    {
+        public static Controller instance;
+        [Header("Character Components")]
+        private GameObject character;
+        private Rigidbody2D rb;
 
-    [Header("Movement Variables")]
-    private float move = 0.0f;
-    private Vector2 velocity;
-    [SerializeField] private float moveVelocity;
-    [Range(0, 1)][SerializeField] private float linearDamping;
+        [Header("Movement Variables")]
+        private float move = 0.0f;
+        private Vector2 velocity;
+        [SerializeField] private float moveVelocity;
+        [Range(0, 1)][SerializeField] private float linearDamping;
 
      [Header("Shoot & Aim Variable")]
      private Vector3 mousePos;
@@ -36,15 +39,16 @@ public class Controller : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        Movement(move * Time.deltaTime);
-    }
+        private void FixedUpdate()
+        {
+            Movement(move * Time.deltaTime);
+        }
 
-    private void Movement(float move)
-    {
-        Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
-        rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
+        private void Movement(float move)
+        {
+            Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
+            rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
+        }
     }
 
     private void AimMouse()
