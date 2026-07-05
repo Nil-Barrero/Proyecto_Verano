@@ -22,6 +22,11 @@ namespace Character
      private Vector3 mousePos;
      private Transform crosshair;
 
+     private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,7 +54,6 @@ namespace Character
             Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
             rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
         }
-    }
 
     private void AimMouse()
     {
@@ -69,4 +73,5 @@ namespace Character
         Destroy(hit.collider.gameObject);
     }
     }
+}  
 }
