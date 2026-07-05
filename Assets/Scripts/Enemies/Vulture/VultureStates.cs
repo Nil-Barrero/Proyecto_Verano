@@ -79,7 +79,7 @@ public class Vulture_GoingToAttackPosState : IState
     {
         v.rigidbody.linearVelocity = Vector2.down * v.speed;
         if (owner.transform.position.y < Controller.instance.transform.position.y)
-            v.controller.ChangeState(v.attackState);
+            v.controller.ChangeState(v.waitingToAttackState);
     }
     public void Exit(GameObject owner)
     {
@@ -96,11 +96,11 @@ public class Vulture_WaitingToAttackState : IState
         timer = waitingToAttackTime;
     }
     public void Update(GameObject owner){
-        waitingToAttackTime -= Time.deltaTime;
-        if(waitingToAttackTime < 0)
+        timer -= Time.deltaTime;
+        if(timer < 0)
         {
             Vulture vulture = owner.GetComponent<Vulture>();
-            vulture.controller.ChangeState(vulture.loopState);
+            vulture.controller.ChangeState(vulture.attackState);
         }   
     }
     public  void Exit(GameObject owner){
