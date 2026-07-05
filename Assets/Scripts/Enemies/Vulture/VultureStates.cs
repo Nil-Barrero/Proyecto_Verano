@@ -96,33 +96,46 @@ public class Vulture_WaitingToAttackState : IState
 [System.Serializable]
 public class Vulture_AttackState : IState
 {
-    public Vulture v;
+    Vulture v;
+    [SerializeField] Vector2 dir;
     public void Enter(GameObject owner)
     {
         if(!v)
             v = owner.GetComponent<Vulture>();
+        dir = owner.transform.position - Controller.instance.transform.position;
     }
     public void Update(GameObject owner)
     {
-       
+        v.rigidbody.linearVelocity = dir.normalized * v.speed * Time.deltaTime;
+        if (Vector2.Distance(v.transform.position, Vector2.zero) < v.targetDistanceTolerance)
+            v.controller.ChangeState(v.returningToLoopPosState);
     }
     public void Exit(GameObject owner)
     {
+        v.rigidbody.linearVelocity = Vector2.zero;
     }
 }
 
 [System.Serializable]
 public class Vulture_ReturningToLoopPosState : IState
 {
+    public Vulture v;
     public void Enter(GameObject owner)
     {
+        v = owner.GetComponent<Vulture>();
     }
     public void Update(GameObject owner)
     {
-
+        if (v)
+        {
+            Vector2 dir = new Vector2(v.transform.position.x, v.transform.position.y) - Vector2.zero;
+            v.rigidbody.linearVelocity = dir.normalized * v.speed * Time.deltaTime;
+            if (Vector2.Distance(v.transform.position, Vector2.zero) < v.targetDistanceTolerance)
+                v.controller.ChangeState(v.loopState);
+        }
     }
     public void Exit(GameObject owner)
     {
-
+        v.rigidbody.linearVelocity = Vector2.zero;
     }
 }
