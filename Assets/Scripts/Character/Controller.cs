@@ -1,5 +1,7 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class Controller : MonoBehaviour
     [SerializeField] private float moveVelocity;
     [Range(0, 1)][SerializeField] private float linearDamping;
 
+     [Header("Shoot & Aim Variable")]
+     private Vector3 mousePos;
+     private Transform crosshair;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +27,13 @@ public class Controller : MonoBehaviour
     private void Update()
     {
         move = Input.GetAxisRaw("Horizontal") * moveVelocity;
+        
+        AimMouse();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
 
     private void FixedUpdate()
@@ -32,5 +45,24 @@ public class Controller : MonoBehaviour
     {
         Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
+    }
+
+    private void AimMouse()
+    {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0.0f;
+
+        //crosshair.position = mousePos;
+    }
+
+    private void Shoot()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+    if (hit.collider != null)
+    {
+        Debug.Log("Golpeaste: " + hit.collider.name);
+        Destroy(hit.collider.gameObject);
+    }
     }
 }
