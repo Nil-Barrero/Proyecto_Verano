@@ -11,6 +11,8 @@ namespace Character
         [Header("Character Components")]
         private GameObject character;
         private Rigidbody2D rb;
+        [SerializeField] private Transform groundManager;
+        [SerializeField] private Vector2 groundBoxSize;
 
         [Header("Movement Variables")]
         private float move = 0.0f;
@@ -18,7 +20,8 @@ namespace Character
         [SerializeField] private float moveVelocity;
         [Range(0, 1)][SerializeField] private float linearDamping;
         [SerializeField] private float jumpForce = 5.0f;
-        private bool isGrounded;
+        [SerializeField] private bool isGrounded;
+        [SerializeField] private LayerMask layer;
 
      [Header("Shoot & Aim Variable")]
      private Vector3 mousePos;
@@ -32,12 +35,13 @@ namespace Character
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        isGrounded = true;
     }
 
     private void Update()
     {
         move = Input.GetAxisRaw("Horizontal") * moveVelocity;
+        isGrounded = Physics2D.OverlapBox(groundManager.position, groundBoxSize, 0.0f, layer);
+
         
         AimMouse();
 
@@ -90,5 +94,11 @@ namespace Character
         Destroy(hit.collider.gameObject);
     }
     }
-}  
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(groundManager.position, groundBoxSize);
+        }
+    }  
 }

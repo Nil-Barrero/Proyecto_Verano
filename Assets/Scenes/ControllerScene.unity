@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 164640614}
   - component: {fileID: 164640613}
   - component: {fileID: 164640612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 1888664397}
   - component: {fileID: 1888664396}
   - component: {fileID: 1888664395}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -978,9 +978,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39b2161cc8b3690f8f8b1de7bbe8022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundManager: {fileID: 2146059146}
+  groundBoxSize: {x: 0.8, y: 0.2}
   moveVelocity: 400
   linearDamping: 0.303
   jumpForce: 5
+  isGrounded: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &1888664397
 Rigidbody2D:
   serializedVersion: 5
@@ -1068,6 +1074,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 950574638}
+  - {fileID: 2146059146}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1928603895
@@ -1237,6 +1244,37 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2146059145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2146059146}
+  m_Layer: 0
+  m_Name: GroundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2146059146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146059145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1888664399}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
