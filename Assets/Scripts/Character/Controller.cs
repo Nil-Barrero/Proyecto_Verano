@@ -23,6 +23,11 @@ namespace Character
         [SerializeField] private bool isGrounded;
         [SerializeField] private LayerMask layer;
 
+        [Header("Gun Variables")]
+        [SerializeField] private GameObject bulletPrefab;
+        [SerializeField] private Transform bulletSpawn;
+        [Range(0.1f, 1f)][SerializeField] private float fireRate = 0.5f;
+
      [Header("Shoot & Aim Variable")]
      private Vector3 mousePos;
      private Transform crosshair;
@@ -42,7 +47,6 @@ namespace Character
         move = Input.GetAxisRaw("Horizontal") * moveVelocity;
         isGrounded = Physics2D.OverlapBox(groundManager.position, groundBoxSize, 0.0f, layer);
 
-        
         AimMouse();
 
         if (Input.GetMouseButtonDown(0))
@@ -56,44 +60,38 @@ namespace Character
         }
     }
 
-    private void FixedUpdate()
-    {
-        Movement(move * Time.deltaTime);
-    }
-
-    private void Movement(float move)
-    {
-        Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
-        rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
-    }
-
-    private void Jump()
-    {
-        if(isGrounded)
+        private void FixedUpdate()
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }      
-    }
+            Movement(move * Time.deltaTime);
+        }
 
-    private void AimMouse()
-    {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0.0f;
+        private void Movement(float move)
+        {
+            Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
+            rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
+        }
 
-        //crosshair.position = mousePos;
-    }
+        private void Jump()
+        {
+            if(isGrounded)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            }      
+        }
 
-    private void Shoot()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        private void AimMouse()
+        {
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0.0f;
 
-    if (hit.collider != null)
-    {
-        Debug.Log("Golpeaste: " + hit.collider.name);
-        Destroy(hit.collider.gameObject);
-    }
-    }
+            //crosshair.position = mousePos;
+        }
+
+        private void Shoot()
+        {
+            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        }
 
         private void OnDrawGizmos()
         {
