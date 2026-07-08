@@ -15,18 +15,19 @@ public class Bullet : MonoBehaviour
         rb.linearVelocity = transform.up * speed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        
+        if (/*collision.gameObject.CompareTag("Enemy")*/collision.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
         {
-            Destroy(collision.gameObject);   
+            hb.Damage();
         }
-        Destroy(this.gameObject); 
+        this.gameObject.SetActive(false);
         Debug.Log("Colision con: " + collision.gameObject.name);
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(this.gameObject);       
+        this.gameObject.SetActive(false);
     }
 }

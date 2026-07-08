@@ -90,7 +90,11 @@ namespace Character
 
         private void Shoot()
         {
-            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            //Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            GameObject bullet = PoolingManager.instance.GetInstanceOfClass("Bullet");
+            bullet.transform.position = bulletSpawn.position;
+            bullet.transform.rotation = bulletSpawn.rotation;
+            bullet.SetActive(true);
         }
 
         private void OnDrawGizmos()
