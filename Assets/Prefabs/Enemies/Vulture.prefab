@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae681af669bd6e4ea9a61589fe8cee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -100
+  speed: 1
   damageValue: 1
   targetDistanceTolerance: 1
   animator: {fileID: 0}
@@ -150,16 +150,17 @@ MonoBehaviour:
   appearingState:
     v: {fileID: 0}
   loopState:
+    seekOffset: {x: 0, y: 4}
     amplitude: 2
-    loopSpeed: 1
-    t: 0
+    height: 1.5
+    loopDuration: 5
   goingToAttackPosState:
     v: {fileID: 0}
   waitingToAttackState:
     waitingToAttackTime: 3
     timer: 0
   attackState:
-    dir: {x: 0, y: 0}
+    attackSpeed: 20
   returningToLoopPosState:
     v: {fileID: 0}
 --- !u!114 &2665579282479710297

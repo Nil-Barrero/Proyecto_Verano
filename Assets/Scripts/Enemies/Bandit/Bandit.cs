@@ -19,6 +19,15 @@ public class Bandit : Enemy
     [SerializeField] public Bandit_ShootingState shootingState;
     [SerializeField] public Bandit_HidingState hidingState;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if (controller != null)
+        {
+            rigidbody.linearVelocity = Vector2.zero;
+            controller.ChangeState(appearingState);
+        }
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -35,7 +44,7 @@ public class Bandit : Enemy
 
     void OnBanditDies()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
     void OnBanditHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
     {
