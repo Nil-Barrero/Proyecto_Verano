@@ -1,13 +1,11 @@
 using UnityEngine;
 
-public class Bandit : Enemy
+public class VultureBoss : Enemy
 {
     [Header("Params")]
     [SerializeField] public float speed = 10;
     [SerializeField] public int damageValue = 1;
     [SerializeField] public float targetDistanceTolerance;
-    [SerializeField] public float shootDistance = 4f;
-    [SerializeField] public GameObject lastBullet;
 
     [Header("Components")]
     [SerializeField] public Animator animator;
@@ -16,10 +14,8 @@ public class Bandit : Enemy
 
     [Header("States")]
     [SerializeField] public FSMController controller;
-    [SerializeField] public Bandit_AppearingState appearingState;
-    [SerializeField] public Bandit_PrepearingShotState prepearingState;
-    [SerializeField] public Bandit_ShootingState shootingState;
-    [SerializeField] public Bandit_HidingState hidingState;
+    [SerializeField] public VultureBoss_AppearingState appearingState;
+    [SerializeField] public VultureBoss_LoopState loopState;
 
     protected override void OnEnable()
     {
@@ -27,34 +23,33 @@ public class Bandit : Enemy
         if (controller != null)
         {
             rigidbody.linearVelocity = Vector2.zero;
-            controller.ChangeState(appearingState);
+            controller.StartFSM(appearingState);
         }
     }
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
 
         rigidbody = GetComponent<Rigidbody2D>();
 
         healthBehaviour = GetComponent<HealthBehaviour>();
-        healthBehaviour.OnDie.AddListener(OnBanditDies);
-        healthBehaviour.OnAlterHealth.AddListener(OnBanditHealthAltered);
+        healthBehaviour.OnDie.AddListener(OnVultureDies);
+        healthBehaviour.OnAlterHealth.AddListener(OnVultureHealthAltered);
 
         controller = this.GetComponent<FSMController>();
         controller.StartFSM(appearingState);
     }
-
-    void OnBanditDies()
+    void OnVultureDies()
     {
         this.gameObject.SetActive(false);
     }
-    void OnBanditHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
+    void OnVultureHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
     {
-
+        //healthBehaviour.SetInvincibility(1.5f);
     }
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.transform.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
+            hb.Damage(damageValue);
     }
 }
