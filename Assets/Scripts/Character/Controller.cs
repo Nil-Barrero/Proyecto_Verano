@@ -95,6 +95,7 @@ namespace Character
             bullet.transform.position = bulletSpawn.position;
             bullet.transform.rotation = bulletSpawn.rotation;
             bullet.SetActive(true);
+            bullet.GetComponent<Bullet>().spawner = this.gameObject;
         }
 
         private void OnDrawGizmos()

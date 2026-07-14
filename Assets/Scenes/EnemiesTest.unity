@@ -569,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4298272453453010786, guid: b32e2f17a687dc642836d0cf91309b04, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -890,7 +890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4298272453453010786, guid: b32e2f17a687dc642836d0cf91309b04, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -997,7 +997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4298272453453010786, guid: b32e2f17a687dc642836d0cf91309b04, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1109,13 +1109,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6168523798902847424, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168523798902847424, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
+      propertyPath: targetDistanceTolerance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8182731924042814818, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
       propertyPath: m_Name
       value: BossVulture
       objectReference: {fileID: 0}
     - target: {fileID: 8182731924042814818, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
