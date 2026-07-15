@@ -179,7 +179,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &446092204
+--- !u!1 &426285153
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,24 +187,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 446092205}
+  - component: {fileID: 426285155}
+  - component: {fileID: 426285154}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: EnemyTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &446092205
+--- !u!114 &426285154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426285153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5edac697ea29f499a558972fb95b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zoneManager: {fileID: 1810501452}
+--- !u!4 &426285155
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446092204}
+  m_GameObject: {fileID: 426285153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8974733, y: -0.62976956, z: 0.020917479}
+  m_LocalPosition: {x: 7.449933, y: -1.0402232, z: -0.08559523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -420,7 +434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,13 +669,17 @@ MonoBehaviour:
   - _zones:
     - {fileID: 2080809798494589140, guid: b22b708d9b872e640814e8fe57bb5684, type: 3}
     requiresCondition: 0
+    enemiesRequired: 0
   - _zones:
     - {fileID: 2080809798494589140, guid: 51515057cfef0e24998e0bcefb85d1a5, type: 3}
     - {fileID: 2080809798494589140, guid: 44abe810bbb4f4f47abb159f041024d2, type: 3}
+    - {fileID: 2080809798494589140, guid: 451ba19d5d17a254baa2a75d30c83a45, type: 3}
     requiresCondition: 1
+    enemiesRequired: 5
   - _zones:
     - {fileID: 2080809798494589140, guid: 30eae1536380c084dae4a8800e65a2f7, type: 3}
     requiresCondition: 1
+    enemiesRequired: 0
   _speed: 3
   _camera: {fileID: 519420031}
 --- !u!4 &1810501453
@@ -689,4 +707,4 @@ SceneRoots:
   - {fileID: 260308882}
   - {fileID: 560146748}
   - {fileID: 1810501453}
-  - {fileID: 446092205}
+  - {fileID: 426285155}
