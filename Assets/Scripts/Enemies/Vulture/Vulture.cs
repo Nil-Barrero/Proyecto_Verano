@@ -23,6 +23,15 @@ public class Vulture : Enemy
     [SerializeField] public Vulture_AttackState attackState;
     [SerializeField] public Vulture_ReturningToLoopPosState returningToLoopPosState;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if (controller != null)
+        {
+            rigidbody.linearVelocity = Vector2.zero;
+            controller.StartFSM(appearingState);
+        }
+    }
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -39,8 +48,8 @@ public class Vulture : Enemy
     void OnVultureDies()
     {
         EnemyTracker.instance.AddEnemyDead();
-        Destroy(this.gameObject);
-    }
+        this.gameObject.SetActive(false);
+     }
     void OnVultureHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
     {
         healthBehaviour.SetInvincibility(1.5f);
