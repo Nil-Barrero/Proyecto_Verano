@@ -95,7 +95,7 @@ public class ZoneManager : MonoBehaviour
 
     void SpawnZone(Zone prefab, float x)
     {
-        Zone instance = Instantiate(prefab, new Vector3((x + (prefab._width/2f)), 0f, 0f), Quaternion.identity);
+        Zone instance = Instantiate(prefab, new Vector3((x + (prefab._width/2f)), 0f, 0f), Quaternion.identity,this.transform);
         instance.ResetZone();
         _activeZones.Add(instance);
     }

@@ -413,6 +413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 7309958892754569346, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -513,7 +517,7 @@ GameObject:
   - component: {fileID: 1500948713}
   - component: {fileID: 1500948712}
   - component: {fileID: 1500948711}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
