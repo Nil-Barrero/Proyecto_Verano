@@ -35,6 +35,7 @@ public class Bandit : Enemy
 
     void OnBanditDies()
     {
+        EnemyTracker.instance.AddEnemyDead();
         Destroy(this.gameObject);
     }
     void OnBanditHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)

@@ -43,12 +43,12 @@ public class ZoneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (var zone in _activeZones)
+        foreach (Zone zone in _activeZones)
         {
             zone.transform.position += Vector3.left * (_speed * Time.deltaTime); 
         }
 
-        foreach(var zone in _activeZones)
+        foreach(Zone zone in _activeZones)
             zone.ActiveZone();
 
         RemoveZone();
@@ -62,6 +62,7 @@ public class ZoneManager : MonoBehaviour
         if(_activeZones.Count > 0 && _activeZones[0].EndX < (_camera.transform.position.x - (_camera.orthographicSize * _camera.aspect)))
         {
             Zone i = _activeZones[0];
+            i.ResetZone();
             _activeZones.RemoveAt(0);
             Destroy(i.gameObject);
         }
@@ -100,4 +101,6 @@ public class ZoneManager : MonoBehaviour
     }
 
     public void NextWave() { _canAdvance = true; }
+
+    public short GetWaveEnemiesRequired() { return _waves[_waveIndex].enemiesRequired; }
 }

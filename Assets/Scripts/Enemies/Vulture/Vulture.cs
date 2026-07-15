@@ -38,6 +38,7 @@ public class Vulture : Enemy
     }
     void OnVultureDies()
     {
+        EnemyTracker.instance.AddEnemyDead();
         Destroy(this.gameObject);
     }
     void OnVultureHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
