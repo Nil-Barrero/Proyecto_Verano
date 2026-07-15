@@ -1958,4 +1958,7 @@ MonoBehaviour:
   _type: 2
   _width: 20
   _height: 0
+  foreground: {fileID: 1775668963624889469}
+  background: {fileID: 5969576713691701452}
+  terrain: {fileID: 3936275388844298488}
   _zoneDistanceX: {fileID: 4302587553172113827}
