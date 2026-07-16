@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 5276975117258001125}
   - component: {fileID: 7706980385651064525}
   - component: {fileID: 4948089077220107422}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1438,6 +1438,9 @@ MonoBehaviour:
   _type: 1
   _width: 18
   _height: 0
+  foreground: {fileID: 6186784325977373362}
+  background: {fileID: 7243538476011934316}
+  terrain: {fileID: 9194089035479652459}
   _zoneDistanceX: {fileID: 4302587553172113827}
 --- !u!1 &9074496811630775587
 GameObject:
