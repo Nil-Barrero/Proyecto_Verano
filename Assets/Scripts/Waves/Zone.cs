@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 /// <summary>
 /// El siguiente script debe de situarse en el gameobject que se encarga de llevar cada sección
@@ -14,6 +15,9 @@ public class Zone : MonoBehaviour
     [Header("Size")]
     public float _width = 0, _height = 0;
 
+
+    public Tilemap foreground, background, terrain;
+
     private bool _isActive = false;
     private readonly List<GameObject> _spawnedEnemies = new List<GameObject>();
 
@@ -23,6 +27,7 @@ public class Zone : MonoBehaviour
     {
         if(_zoneDistanceX != null)
             _zoneDistanceX.SetActive(false);
+        
     }
 
     private void OnValidate()
@@ -31,6 +36,7 @@ public class Zone : MonoBehaviour
         {
             Vector3 scale = _zoneDistanceX.transform.localScale;
             scale.x = _width;
+           // scale.x = terrain.size.x;
             _zoneDistanceX.transform.localScale = scale;
         }
     }
@@ -38,7 +44,8 @@ public class Zone : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _width = terrain.size.x;
+        _height = terrain.size.y;
     }
 
     // Update is called once per frame
