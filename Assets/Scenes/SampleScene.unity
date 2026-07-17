@@ -474,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5203219662291037856, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.25
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: 5203219662291037856, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
       propertyPath: m_LocalPosition.z
@@ -511,6 +511,22 @@ PrefabInstance:
     - target: {fileID: 6018047258205487550, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491345046272821092, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491345046272821092, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 225705071
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263687614136557269, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263687614136557269, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 225705071
       objectReference: {fileID: 0}
     - target: {fileID: 8929368653447976009, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
       propertyPath: m_Enabled
@@ -713,8 +729,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 858919019
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -780,6 +796,8 @@ MonoBehaviour:
     - {fileID: 2080809798494589140, guid: 51515057cfef0e24998e0bcefb85d1a5, type: 3}
     - {fileID: 2080809798494589140, guid: 44abe810bbb4f4f47abb159f041024d2, type: 3}
     - {fileID: 2080809798494589140, guid: 451ba19d5d17a254baa2a75d30c83a45, type: 3}
+    - {fileID: 2080809798494589140, guid: 322abd067e00ecf47bd0d9835842f408, type: 3}
+    - {fileID: 2080809798494589140, guid: f38d103507272e94fa2ab729b61ba885, type: 3}
     requiresCondition: 1
     enemiesRequired: 5
   - _zones:
