@@ -795,9 +795,10 @@ MonoBehaviour:
   - _zones:
     - {fileID: 2080809798494589140, guid: 51515057cfef0e24998e0bcefb85d1a5, type: 3}
     - {fileID: 2080809798494589140, guid: 44abe810bbb4f4f47abb159f041024d2, type: 3}
-    - {fileID: 2080809798494589140, guid: 451ba19d5d17a254baa2a75d30c83a45, type: 3}
-    - {fileID: 2080809798494589140, guid: 322abd067e00ecf47bd0d9835842f408, type: 3}
-    - {fileID: 2080809798494589140, guid: f38d103507272e94fa2ab729b61ba885, type: 3}
+    - {fileID: 2080809798494589140, guid: 1479a51f96bf9a54d9c796f4a171a9ea, type: 3}
+    - {fileID: 2080809798494589140, guid: 7844dd89cf810614fbe91a0acc041e33, type: 3}
+    - {fileID: 2080809798494589140, guid: 607128698ff579a4491a9dec101d48df, type: 3}
+    - {fileID: 2080809798494589140, guid: a50005cda86367c47b3e7c2a789cc62a, type: 3}
     requiresCondition: 1
     enemiesRequired: 5
   - _zones:
