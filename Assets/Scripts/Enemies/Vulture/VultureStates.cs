@@ -18,7 +18,9 @@ public class Vulture_AppearingState : IState
         v.rigidbody.linearVelocity = dir.normalized * v.speed;
         if (Vector2.Distance(v.transform.position, targetPos) < v.targetDistanceTolerance)
             v.controller.ChangeState(v.loopState);
-        
+
+        v.spriteRenderer.flipX = (owner.transform.position.x < Controller.instance.transform.position.x);
+
     }
     public void Exit(GameObject owner)
     {
@@ -60,6 +62,8 @@ public class Vulture_LoopState : IState
         timer += Time.deltaTime;
         if (timer > loopDuration)
             v.controller.ChangeState(v.goingToAttackPosState);
+
+        v.spriteRenderer.flipX = (owner.transform.position.x < Controller.instance.transform.position.x);
     }
     public void Exit(GameObject owner)
     {
@@ -70,6 +74,7 @@ public class Vulture_LoopState : IState
 [System.Serializable]
 public class Vulture_GoingToAttackPosState : IState
 {
+    public float speedMult = 2.5f;
     public Vulture v;
     public void Enter(GameObject owner)
     {
@@ -77,9 +82,11 @@ public class Vulture_GoingToAttackPosState : IState
     }
     public void Update(GameObject owner)
     {
-        v.rigidbody.linearVelocity = Vector2.down * v.speed;
+        v.rigidbody.linearVelocity = Vector2.down * v.speed * speedMult;
         if (owner.transform.position.y < Controller.instance.transform.position.y)
             v.controller.ChangeState(v.waitingToAttackState);
+
+        v.spriteRenderer.flipX = (owner.transform.position.x < Controller.instance.transform.position.x);
     }
     public void Exit(GameObject owner)
     {
@@ -92,16 +99,21 @@ public class Vulture_WaitingToAttackState : IState
 {
     public float waitingToAttackTime = 3;
     [SerializeField]float timer = 0;
+    [SerializeField] Vector3 constantDistanceToPlayer;
     public void Enter(GameObject owner) {
         timer = waitingToAttackTime;
+        constantDistanceToPlayer = Controller.instance.transform.position - owner.transform.position;
     }
     public void Update(GameObject owner){
+        owner.transform.position = Controller.instance.transform.position + constantDistanceToPlayer;
         timer -= Time.deltaTime;
         if(timer < 0)
         {
             Vulture vulture = owner.GetComponent<Vulture>();
             vulture.controller.ChangeState(vulture.attackState);
         }   
+
+       
     }
     public  void Exit(GameObject owner){
         
@@ -135,6 +147,7 @@ public class Vulture_AttackState : IState
         v.rigidbody.linearVelocity = dir * attackSpeed;
         if (Vector2.Dot(end - (Vector2)owner.transform.position, dir) <= 0f)
             v.controller.ChangeState(v.returningToLoopPosState);
+
     }
 
     public void Exit(GameObject owner)
@@ -158,6 +171,8 @@ public class Vulture_ReturningToLoopPosState : IState
         v.rigidbody.linearVelocity = dir.normalized * v.speed;
         if (Vector2.Distance(v.transform.position, targetPos) < v.targetDistanceTolerance)
             v.controller.ChangeState(v.loopState);
+
+        v.spriteRenderer.flipX = (targetPos.x < dir.x);
     }
     public void Exit(GameObject owner)
     {
