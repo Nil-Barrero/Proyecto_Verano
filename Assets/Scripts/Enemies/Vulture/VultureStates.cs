@@ -139,7 +139,8 @@ public class Vulture_AttackState : IState
         start = owner.transform.position;
         Vector2 player = Controller.instance.transform.position;
         end = player + (player - start);  
-        dir = (end - start).normalized;  
+        dir = (end - start).normalized;
+        v.spriteRenderer.flipX = dir.x < 0;
     }
 
     public void Update(GameObject owner)
@@ -172,7 +173,8 @@ public class Vulture_ReturningToLoopPosState : IState
         if (Vector2.Distance(v.transform.position, targetPos) < v.targetDistanceTolerance)
             v.controller.ChangeState(v.loopState);
 
-        v.spriteRenderer.flipX = (targetPos.x < dir.x);
+        //v.spriteRenderer.flipX = (targetPos.x < dir.x); Por si se quiere que mire hacia donde se mueve
+        v.spriteRenderer.flipX = (owner.transform.position.x < Controller.instance.transform.position.x); //siga mirando al jugador
     }
     public void Exit(GameObject owner)
     {

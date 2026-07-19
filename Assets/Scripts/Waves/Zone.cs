@@ -70,7 +70,7 @@ public class Zone : MonoBehaviour
         {
             if (enemy != null)
             {
-                enemy.transform.SetParent(null);
+                //enemy.transform.SetParent(null);
                 enemy.SetActive(false);
             }
         }
@@ -92,8 +92,10 @@ public class Zone : MonoBehaviour
                 continue;
             }
 
-            enemy.transform.SetParent(point.transform, false);
-            enemy.transform.localPosition = Vector3.zero;
+            //enemy.transform.SetParent(point.transform, false);
+            enemy.GetComponent<Enemy>().assignedZoneReference = point.gameObject;
+            //enemy.transform.localPosition = Vector3.zero;
+            enemy.transform.position = point.transform.position;
             enemy.SetActive(true);
             _spawnedEnemies.Add(enemy);
         }
