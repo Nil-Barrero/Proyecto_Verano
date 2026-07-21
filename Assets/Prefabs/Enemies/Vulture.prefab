@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1713931553
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2633481834116499376, guid: c73939a947e7ad449b09ae9fdf1ec05a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -140,10 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae681af669bd6e4ea9a61589fe8cee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignedZoneReference: {fileID: 0}
   speed: 1
   damageValue: 1
   targetDistanceTolerance: 1
   animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   rigidbody: {fileID: 0}
   healthBehaviour: {fileID: 0}
   controller: {fileID: 0}
@@ -155,10 +157,12 @@ MonoBehaviour:
     height: 1.5
     loopDuration: 5
   goingToAttackPosState:
+    speedMult: 2.5
     v: {fileID: 0}
   waitingToAttackState:
     waitingToAttackTime: 3
     timer: 0
+    constantDistanceToPlayer: {x: 0, y: 0, z: 0}
   attackState:
     attackSpeed: 20
   returningToLoopPosState:

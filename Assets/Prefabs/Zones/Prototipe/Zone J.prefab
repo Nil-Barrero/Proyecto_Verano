@@ -2490,7 +2490,14 @@ MonoBehaviour:
   foreground: {fileID: 6186784325977373362}
   background: {fileID: 7243538476011934316}
   terrain: {fileID: 9194089035479652459}
-  _zoneDistanceX: {fileID: 0}
+  _zoneDistanceX: {fileID: 3915265343130032615}
+  isVisible: 0
+  onZoneAppear:
+    m_PersistentCalls:
+      m_Calls: []
+  onZoneDisappear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9074496811630775587
 GameObject:
   m_ObjectHideFlags: 0
