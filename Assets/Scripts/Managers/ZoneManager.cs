@@ -37,7 +37,7 @@ public class ZoneManager : MonoBehaviour
         if (_activeZones.Count < _zonesToActive)
             NextZone();
 
-        _activeZones[0].ActiveZone();
+        //_activeZones[0].ActiveZone();
     }
 
     // Update is called once per frame
@@ -48,8 +48,8 @@ public class ZoneManager : MonoBehaviour
             zone.transform.position += Vector3.left * (_speed * Time.deltaTime); 
         }
 
-        foreach(Zone zone in _activeZones)
-            zone.ActiveZone();
+        //foreach(Zone zone in _activeZones)
+           // zone.ActiveZone();
 
         RemoveZone();
 

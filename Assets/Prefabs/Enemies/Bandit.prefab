@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1713931553
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2011081452543692480, guid: ed20e063045830f4a8524cbdec412b95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -127,9 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51cd0c28602adc1428ea1c38c921269e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignedZoneReference: {fileID: 0}
   speed: 10
   damageValue: 1
   targetDistanceTolerance: 0
+  shootDistance: 4
+  lastBullet: {fileID: 0}
   animator: {fileID: 0}
   rigidbody: {fileID: 0}
   healthBehaviour: {fileID: 0}
@@ -138,6 +141,7 @@ MonoBehaviour:
     b: {fileID: 0}
   prepearingState:
     b: {fileID: 0}
+    timeToShoot: 5
   shootingState:
     b: {fileID: 0}
   hidingState:
