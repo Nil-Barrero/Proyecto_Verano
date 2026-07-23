@@ -105,7 +105,7 @@ public class Vulture_WaitingToAttackState : IState
         constantDistanceToPlayer = Controller.instance.transform.position - owner.transform.position;
     }
     public void Update(GameObject owner){
-        owner.transform.position = Controller.instance.transform.position + constantDistanceToPlayer;
+        owner.transform.position = new Vector2(Controller.instance.transform.position.x + constantDistanceToPlayer.x, owner.transform.position.y);
         timer -= Time.deltaTime;
         if(timer < 0)
         {

@@ -12,7 +12,7 @@ public class Bandit_AppearingState : IState
     }
     public void Update(GameObject owner)
     {
-        
+
         b.rigidbody.linearVelocityX = Mathf.Sign(Controller.instance.transform.position.x - owner.transform.position.x) * b.speed;
         if (Mathf.Abs(Controller.instance.transform.position.x - owner.transform.position.x) < b.shootDistance)
             b.controller.ChangeState(b.prepearingState);
@@ -21,29 +21,33 @@ public class Bandit_AppearingState : IState
     {
     }
 }
+
 [System.Serializable]
 public class Bandit_PrepearingShotState : IState
 {
     public Bandit b;
     public float timeToShoot = 5;
+    public float patrolSpeed = 2f;
+    public float patrolFrequency = 3f;
     private float timer = 0;
     public void Enter(GameObject owner)
     {
         b = owner.GetComponent<Bandit>();
         timer = timeToShoot;
-        b.rigidbody.linearVelocityX = 0;
     }
     public void Update(GameObject owner)
     {
-        timer-= Time.deltaTime;
-        if(timer <= 0 )
+        b.rigidbody.linearVelocityX = Mathf.Sin(timer * patrolFrequency) * patrolSpeed;
+        timer -= Time.deltaTime;
+        if (timer <= 0)
             b.controller.ChangeState(b.shootingState);
-
     }
     public void Exit(GameObject owner)
     {
+        b.rigidbody.linearVelocityX = 0;
     }
 }
+
 [System.Serializable]
 public class Bandit_ShootingState : IState
 {
@@ -68,6 +72,7 @@ public class Bandit_ShootingState : IState
     {
     }
 }
+
 [System.Serializable]
 public class Bandit_HidingState : IState
 {
@@ -102,7 +107,7 @@ public class Bandit_PassThroughState : IState
     {
         timer -= Time.deltaTime;
 
-        if(timer <= 0)
+        if (timer <= 0)
         {
             timer = timeBetweenShoots;
             Vector2 dir = ((Vector2)Controller.instance.transform.position - (Vector2)owner.transform.position).normalized;
