@@ -24,7 +24,8 @@ public class PoolingManager : MonoBehaviour
         instance = this;
         foreach (PoolingClass pooler in poolers)
         {
-            GameObject container = GameObject.Instantiate(new GameObject(), this.transform);
+            GameObject container = new GameObject(pooler.poolName);
+            container.transform.SetParent(this.transform);
             container.name = pooler.poolName;
             pooler.SetContainer(container);
             pooler.pools.Clear();

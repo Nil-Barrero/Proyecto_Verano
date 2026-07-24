@@ -6,6 +6,8 @@ public class Bandit : Enemy
     [SerializeField] public float speed = 10;
     [SerializeField] public int damageValue = 1;
     [SerializeField] public float targetDistanceTolerance;
+    [SerializeField] public float shootDistance = 4f;
+    [SerializeField] public GameObject lastBullet;
 
     [Header("Components")]
     [SerializeField] public Animator animator;
@@ -19,6 +21,15 @@ public class Bandit : Enemy
     [SerializeField] public Bandit_ShootingState shootingState;
     [SerializeField] public Bandit_HidingState hidingState;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if (controller != null)
+        {
+            rigidbody.linearVelocity = Vector2.zero;
+            controller.ChangeState(appearingState);
+        }
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -36,7 +47,7 @@ public class Bandit : Enemy
     void OnBanditDies()
     {
         EnemyTracker.instance.AddEnemyDead();
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
     void OnBanditHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
     {
