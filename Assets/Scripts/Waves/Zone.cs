@@ -20,6 +20,7 @@ public class Zone : MonoBehaviour
     public Tilemap foreground, background, terrain;
 
     private bool _isActive = false;
+    public bool _disabledEnemies = false;
     private readonly List<GameObject> _spawnedEnemies = new List<GameObject>();
 
     public GameObject _zoneDistanceX;
@@ -96,32 +97,31 @@ public class Zone : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        EnemySpawnPoint[] spawnPoints = GetComponentsInChildren<EnemySpawnPoint>(true);
-
-        foreach (EnemySpawnPoint point in spawnPoints)
+        if(!_disabledEnemies)
         {
+            EnemySpawnPoint[] spawnPoints = GetComponentsInChildren<EnemySpawnPoint>(true);
 
-            GameObject enemy = PoolingManager.instance.GetInstanceOfClass(point._poolName);
-
-            if (enemy == null)
+            foreach (EnemySpawnPoint point in spawnPoints)
             {
-                Debug.LogWarning($"Zone '{name}': no hay enemigos disponibles en el pool '{point._poolName}'.");
-                continue;
-            }
 
-            //enemy.transform.SetParent(point.transform, false);
-            enemy.GetComponent<Enemy>().assignedZoneReference = point.gameObject;
-            //enemy.transform.localPosition = Vector3.zero;
-            enemy.transform.position = point.transform.position;
-            enemy.SetActive(true);
-            _spawnedEnemies.Add(enemy);
+                GameObject enemy = PoolingManager.instance.GetInstanceOfClass(point._poolName);
+
+                if (enemy == null)
+                {
+                    Debug.LogWarning($"Zone '{name}': no hay enemigos disponibles en el pool '{point._poolName}'.");
+                    continue;
+                }
+
+                //enemy.transform.SetParent(point.transform, false);
+                enemy.GetComponent<Enemy>().assignedZoneReference = point.gameObject;
+                //enemy.transform.localPosition = Vector3.zero;
+                enemy.transform.position = point.transform.position;
+                enemy.SetActive(true);
+                _spawnedEnemies.Add(enemy);
+            }
         }
     }
 
     public float EndX => transform.position.x + (_width/2f);
     public float StartX => transform.position.x - (_width/2f);
-
-
-
-   
 }
