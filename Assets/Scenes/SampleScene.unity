@@ -1079,19 +1079,70 @@ MonoBehaviour:
     - {fileID: 2080809798494589140, guid: 51515057cfef0e24998e0bcefb85d1a5, type: 3}
     - {fileID: 2080809798494589140, guid: 44abe810bbb4f4f47abb159f041024d2, type: 3}
     - {fileID: 2080809798494589140, guid: 1479a51f96bf9a54d9c796f4a171a9ea, type: 3}
-    - {fileID: 2080809798494589140, guid: 7844dd89cf810614fbe91a0acc041e33, type: 3}
-    - {fileID: 2080809798494589140, guid: 607128698ff579a4491a9dec101d48df, type: 3}
-    - {fileID: 2080809798494589140, guid: 13bf380b8e1f85541a9e830214b2adfd, type: 3}
-    - {fileID: 2080809798494589140, guid: 1db6b939004407d4cab7b78df7beb907, type: 3}
-    - {fileID: 2080809798494589140, guid: a50005cda86367c47b3e7c2a789cc62a, type: 3}
-    - {fileID: 2080809798494589140, guid: 81aad2971dd9ce947ab4367c5b7ea4c6, type: 3}
-    - {fileID: 2080809798494589140, guid: 7fd37fbd8ea13834697d3f8a2e2751fc, type: 3}
-    - {fileID: 2080809798494589140, guid: 0aac6512ed3e8ef469ed88ec927ef9fb, type: 3}
-    - {fileID: 2080809798494589140, guid: de28a9125ef4977489053038fc9e9edf, type: 3}
     requiresCondition: 1
     enemiesRequired: 50
   - _zones:
-    - {fileID: 2080809798494589140, guid: 0d1e32b3409786a4b9bf63753849fce5, type: 3}
+    - {fileID: 2080809798494589140, guid: abaee4176abb8034fbed8e32e1131f6d, type: 3}
+    - {fileID: 2080809798494589140, guid: 44abe810bbb4f4f47abb159f041024d2, type: 3}
+    - {fileID: 2080809798494589140, guid: 1479a51f96bf9a54d9c796f4a171a9ea, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 3
+  - _zones:
+    - {fileID: 2080809798494589140, guid: aa374a3dc2dbd284b9c296ffef27f663, type: 3}
+    - {fileID: 2080809798494589140, guid: 44abe810bbb4f4f47abb159f041024d2, type: 3}
+    - {fileID: 2080809798494589140, guid: 1479a51f96bf9a54d9c796f4a171a9ea, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 6
+  - _zones:
+    - {fileID: 2080809798494589140, guid: 7844dd89cf810614fbe91a0acc041e33, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 0
+  - _zones:
+    - {fileID: 2080809798494589140, guid: 607128698ff579a4491a9dec101d48df, type: 3}
+    - {fileID: 2080809798494589140, guid: 13bf380b8e1f85541a9e830214b2adfd, type: 3}
+    - {fileID: 2080809798494589140, guid: 1db6b939004407d4cab7b78df7beb907, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 3
+  - _zones:
+    - {fileID: 2080809798494589140, guid: 0ee2918ba84709641ad6e3ba7a663376, type: 3}
+    - {fileID: 2080809798494589140, guid: 13bf380b8e1f85541a9e830214b2adfd, type: 3}
+    - {fileID: 2080809798494589140, guid: 1db6b939004407d4cab7b78df7beb907, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 4
+  - _zones:
+    - {fileID: 2080809798494589140, guid: 5093cb3426541ec46a68e7a048e0b6e8, type: 3}
+    - {fileID: 2080809798494589140, guid: 13bf380b8e1f85541a9e830214b2adfd, type: 3}
+    - {fileID: 2080809798494589140, guid: 1db6b939004407d4cab7b78df7beb907, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 6
+  - _zones:
+    - {fileID: 2080809798494589140, guid: a50005cda86367c47b3e7c2a789cc62a, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 0
+  - _zones:
+    - {fileID: 2080809798494589140, guid: 81aad2971dd9ce947ab4367c5b7ea4c6, type: 3}
+    - {fileID: 2080809798494589140, guid: 7fd37fbd8ea13834697d3f8a2e2751fc, type: 3}
+    - {fileID: 2080809798494589140, guid: 0aac6512ed3e8ef469ed88ec927ef9fb, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 6
+  - _zones:
+    - {fileID: 2080809798494589140, guid: ab823b1364ddfca43b3beb3ce4b7db94, type: 3}
+    - {fileID: 2080809798494589140, guid: 7fd37fbd8ea13834697d3f8a2e2751fc, type: 3}
+    - {fileID: 2080809798494589140, guid: 0aac6512ed3e8ef469ed88ec927ef9fb, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 7
+  - _zones:
+    - {fileID: 2080809798494589140, guid: 1b25037028cc1c641b15f94846df1c54, type: 3}
+    - {fileID: 2080809798494589140, guid: 7fd37fbd8ea13834697d3f8a2e2751fc, type: 3}
+    - {fileID: 2080809798494589140, guid: 0aac6512ed3e8ef469ed88ec927ef9fb, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 13
+  - _zones:
+    - {fileID: 2080809798494589140, guid: de28a9125ef4977489053038fc9e9edf, type: 3}
+    requiresCondition: 1
+    enemiesRequired: 0
+  - _zones:
+    - {fileID: 2080809798494589140, guid: 30eae1536380c084dae4a8800e65a2f7, type: 3}
     requiresCondition: 1
     enemiesRequired: 0
   _speed: 3
