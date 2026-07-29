@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assignedZoneReference: {fileID: 0}
-  speed: 10
+  speed: 1
   damageValue: 1
   targetDistanceTolerance: 0
   animator: {fileID: 0}
@@ -191,13 +191,15 @@ MonoBehaviour:
   controller: {fileID: 0}
   appearingState:
     v: {fileID: 0}
+    distanceToPatrol: 4
   loopState:
     seekOffset: {x: 0, y: 4}
     amplitude: 4
     height: 1.5
+    loopSpeed: 1
     loopDuration: 5
-    minTimeToShoot: 0
-    maxTimeToShoot: 0
+    minTimeToShoot: 1
+    maxTimeToShoot: 2
 --- !u!114 &1864354027395610040
 MonoBehaviour:
   m_ObjectHideFlags: 0
