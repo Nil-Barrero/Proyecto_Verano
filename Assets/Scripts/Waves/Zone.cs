@@ -30,7 +30,7 @@ public class Zone : MonoBehaviour
 
     private void Awake()
     {
-        if(_zoneDistanceX != null)
+        if (_zoneDistanceX != null)
             _zoneDistanceX.SetActive(false);
 
         onZoneAppear.AddListener(ActiveZone);
@@ -39,11 +39,11 @@ public class Zone : MonoBehaviour
 
     private void OnValidate()
     {
-        if(_zoneDistanceX != null)
+        if (_zoneDistanceX != null)
         {
             Vector3 scale = _zoneDistanceX.transform.localScale;
             scale.x = _width;
-           // scale.x = terrain.size.x;
+            // scale.x = terrain.size.x;
             _zoneDistanceX.transform.localScale = scale;
         }
     }
