@@ -11,6 +11,7 @@ public class Vulture : Enemy
 
     [Header("Components")]
     [SerializeField] public Animator animator;
+    [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Rigidbody2D rigidbody;
     [SerializeField] public HealthBehaviour healthBehaviour;
 
@@ -44,6 +45,8 @@ public class Vulture : Enemy
 
         controller = this.GetComponent<FSMController>();
         controller.StartFSM(appearingState);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void OnVultureDies()
     {

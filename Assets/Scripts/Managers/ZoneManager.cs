@@ -16,6 +16,7 @@ public class ZoneManager : MonoBehaviour
     public const short _zonesToActive = 3;
 
     private readonly List<Zone> _activeZones = new List<Zone>();
+    private readonly HashSet<Zone> _usedZones = new HashSet<Zone>();
     private short _zonesIndex = 0;
     private short _waveIndex = 0;
     private bool _canAdvance;
@@ -32,12 +33,10 @@ public class ZoneManager : MonoBehaviour
         _waveIndex = 0;
         _zonesIndex = 0;
 
-        SpawnZone(_waves[_waveIndex]._zones[_zonesIndex], 0f);
+        SpawnZone(_waves[_waveIndex]._zones[_zonesIndex],_camera.transform.position.x - (_camera.orthographicSize * _camera.aspect));
 
         if (_activeZones.Count < _zonesToActive)
             NextZone();
-
-        _activeZones[0].ActiveZone();
     }
 
     // Update is called once per frame
@@ -47,9 +46,6 @@ public class ZoneManager : MonoBehaviour
         {
             zone.transform.position += Vector3.left * (_speed * Time.deltaTime); 
         }
-
-        foreach(Zone zone in _activeZones)
-            zone.ActiveZone();
 
         RemoveZone();
 
@@ -74,6 +70,7 @@ public class ZoneManager : MonoBehaviour
 
         if(shouldAdvance)
         {
+            _usedZones.Clear();
             _canAdvance = false;
             _waveIndex++;
             _zonesIndex = 0;
@@ -81,6 +78,7 @@ public class ZoneManager : MonoBehaviour
             if(_waveIndex >= _waves.Count)
             {
                 //End of level
+                //Como no hay final de momento lo único que hace es repetir de forma perpetua la última zona :p
                 _waveIndex = (short)(_waves.Count - 1);
             }
 
@@ -96,6 +94,8 @@ public class ZoneManager : MonoBehaviour
     void SpawnZone(Zone prefab, float x)
     {
         Zone instance = Instantiate(prefab, new Vector3((x + (prefab._width/2f)), 0f, 0f), Quaternion.identity,this.transform);
+        //La variable para deshabilitar enemigos dependera de si el prefab ya ha sido incluido en la HashSet
+        instance._disabledEnemies = !_usedZones.Add(prefab);
         instance.ResetZone();
         _activeZones.Add(instance);
     }

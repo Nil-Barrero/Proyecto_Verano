@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 /// <summary>
@@ -19,15 +20,21 @@ public class Zone : MonoBehaviour
     public Tilemap foreground, background, terrain;
 
     private bool _isActive = false;
+    public bool _disabledEnemies = false;
     private readonly List<GameObject> _spawnedEnemies = new List<GameObject>();
 
     public GameObject _zoneDistanceX;
+    public bool isVisible;
+    bool wasVisible;
+    public UnityEvent onZoneAppear,onZoneDisappear;
 
     private void Awake()
     {
         if(_zoneDistanceX != null)
             _zoneDistanceX.SetActive(false);
-        
+
+        onZoneAppear.AddListener(ActiveZone);
+
     }
 
     private void OnValidate()
@@ -51,7 +58,18 @@ public class Zone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CalculateVisibility();
+    }
+    void CalculateVisibility()
+    {
+        float camW = Camera.main.orthographicSize * Camera.main.aspect;
+        float camX = Camera.main.transform.position.x;
+        isVisible = ((StartX <= camX + camW) && (EndX >= camX - camW));
+        if (isVisible && !wasVisible)
+            onZoneAppear.Invoke();
+        else if (!isVisible && wasVisible)
+            onZoneDisappear.Invoke();
+        wasVisible = isVisible;
     }
 
     public void ActiveZone()
@@ -70,8 +88,8 @@ public class Zone : MonoBehaviour
         {
             if (enemy != null)
             {
-                enemy.transform.SetParent(null);
-                enemy.SetActive(false);
+                //enemy.transform.SetParent(null);
+                //enemy.SetActive(false);
             }
         }
         _spawnedEnemies.Clear();
@@ -79,23 +97,28 @@ public class Zone : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        EnemySpawnPoint[] spawnPoints = GetComponentsInChildren<EnemySpawnPoint>(true);
-
-        foreach (EnemySpawnPoint point in spawnPoints)
+        if(!_disabledEnemies)
         {
+            EnemySpawnPoint[] spawnPoints = GetComponentsInChildren<EnemySpawnPoint>(true);
 
-            GameObject enemy = PoolingManager.instance.GetInstanceOfClass(point._poolName);
-
-            if (enemy == null)
+            foreach (EnemySpawnPoint point in spawnPoints)
             {
-                Debug.LogWarning($"Zone '{name}': no hay enemigos disponibles en el pool '{point._poolName}'.");
-                continue;
-            }
 
-            enemy.transform.SetParent(point.transform, false);
-            enemy.transform.localPosition = Vector3.zero;
-            enemy.SetActive(true);
-            _spawnedEnemies.Add(enemy);
+                GameObject enemy = PoolingManager.instance.GetInstanceOfClass(point._poolName);
+
+                if (enemy == null)
+                {
+                    Debug.LogWarning($"Zone '{name}': no hay enemigos disponibles en el pool '{point._poolName}'.");
+                    continue;
+                }
+
+                //enemy.transform.SetParent(point.transform, false);
+                enemy.GetComponent<Enemy>().assignedZoneReference = point.gameObject;
+                //enemy.transform.localPosition = Vector3.zero;
+                enemy.transform.position = point.transform.position;
+                enemy.SetActive(true);
+                _spawnedEnemies.Add(enemy);
+            }
         }
     }
 

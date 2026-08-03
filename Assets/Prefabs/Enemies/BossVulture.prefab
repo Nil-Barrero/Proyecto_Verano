@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2676945494340635431}
   - component: {fileID: 6168523798902847424}
   - component: {fileID: 1864354027395610040}
+  - component: {fileID: 714294445387556880}
   m_Layer: 0
   m_Name: BossVulture
   m_TagString: Untagged
@@ -78,15 +79,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1713931553
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 135239576098054235, guid: a43e6ea8b485b734eabdef4a52e4fdcf, type: 3}
+  m_Sprite: {fileID: 3915735124074065095, guid: 6c1684ccb436a884ba305bde1b0e7fea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.3, y: 3.18}
+  m_Size: {x: 0.93442625, y: 0.9918033}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -180,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad7295d07273f2469ce702ffe82a1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignedZoneReference: {fileID: 0}
   speed: 10
   damageValue: 1
   targetDistanceTolerance: 0
@@ -194,15 +196,8 @@ MonoBehaviour:
     amplitude: 4
     height: 1.5
     loopDuration: 5
-  goingToAttackPosState:
-    v: {fileID: 0}
-  waitingToAttackState:
-    waitingToAttackTime: 3
-    timer: 0
-  attackState:
-    attackSpeed: 20
-  returningToLoopPosState:
-    v: {fileID: 0}
+    minTimeToShoot: 0
+    maxTimeToShoot: 0
 --- !u!114 &1864354027395610040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,3 +230,25 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &714294445387556880
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8182731924042814818}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89182956ad385c1439cec8fb2055ac0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 2738a9194269812468d359cc15922bf7
+guid: c73939a947e7ad449b09ae9fdf1ec05a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2107351653066986617
-    second: Buitre_0
+      213: -2633481834116499376
+    second: Buitre 1_0
+  - first:
+      213: -935764420949152579
+    second: Buitre 1_1
+  - first:
+      213: 4376012648328308134
+    second: Buitre 1_2
+  - first:
+      213: 8440153501698556429
+    second: Buitre 1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buitre_0
+      name: Buitre 1_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 3
-        width: 118
-        height: 114
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 2, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78b2c1636de21c2e0800000000000000
-      internalID: -2107351653066986617
+      spriteID: 058ba03893ef37bd0800000000000000
+      internalID: -2633481834116499376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buitre 1_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 11}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc60ef873f7303f0800000000000000
+      internalID: -935764420949152579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buitre 1_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 11}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a5a93c8158babc30800000000000000
+      internalID: 4376012648328308134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buitre 1_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 2, z: 0, w: 2}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d02038654e2712570800000000000000
+      internalID: 8440153501698556429
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ef90eecbb5ebc4941b9f0076978fc51e
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Buitre_0: -2107351653066986617
+      Buitre 1_0: -2633481834116499376
+      Buitre 1_1: -935764420949152579
+      Buitre 1_2: 4376012648328308134
+      Buitre 1_3: 8440153501698556429
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
