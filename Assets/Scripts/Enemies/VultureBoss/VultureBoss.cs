@@ -12,10 +12,46 @@ public class VultureBoss : Enemy
     [SerializeField] public Rigidbody2D rigidbody;
     [SerializeField] public HealthBehaviour healthBehaviour;
 
+    [Header("Objects")]
+    [SerializeField] public GameObject blowZone;
+    [SerializeField] public StripesController stripesController;
+
     [Header("States")]
     [SerializeField] public FSMController controller;
+    
     [SerializeField] public VultureBoss_AppearingState appearingState;
     [SerializeField] public VultureBoss_LoopState loopState;
+    [SerializeField] public VultureBoss_PrepearingBlowState prepearingBlowState;
+    [SerializeField] public VultureBoss_BlowState blowState;
+    [SerializeField] public VultureBoss_PrepearingTackleState prepearingTackleState;
+    [SerializeField] public VultureBoss_TackleState tackleState;
+    [SerializeField] public VultureBoss_PrepearingTackleShotState prepearingTackleShotState; 
+    [SerializeField] public VultureBoss_TackleShotState tackleShotState;
+
+
+    [Header("States/Transitions")]
+    public float special1Transition = 50f;
+    public float weightShift = 20f;     
+    public int enrageThreshold = 20;
+
+    bool IsEnraged() { return enrageThreshold >= healthBehaviour.GetHealth(); }
+
+    public IState GetNextState()
+    {
+        if (IsEnraged())
+            return prepearingTackleShotState;
+
+        if (Random.value * 100f < special1Transition)
+        {
+            special1Transition = Mathf.Clamp(special1Transition - weightShift, 0f, 100f);
+            return prepearingBlowState;                          
+        }
+        else
+        {
+            special1Transition = Mathf.Clamp(special1Transition + weightShift, 0f, 100f);
+            return prepearingTackleState;                
+        }
+    }
 
     protected override void OnEnable()
     {
@@ -52,4 +88,6 @@ public class VultureBoss : Enemy
         if (collision.transform.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
             hb.Damage(damageValue);
     }
+    public void EnableBlowZone() { blowZone.SetActive(true); }
+    public void DisableBlowZone() { blowZone.SetActive(false); }
 }

@@ -24,6 +24,7 @@ public class Vulture : Enemy
     [SerializeField] public Vulture_AttackState attackState;
     [SerializeField] public Vulture_ReturningToLoopPosState returningToLoopPosState;
 
+
     protected override void OnEnable()
     {
         base.OnEnable();
