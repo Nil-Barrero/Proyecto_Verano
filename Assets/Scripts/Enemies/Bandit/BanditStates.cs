@@ -26,7 +26,7 @@ public class Bandit_AppearingState : IState
 public class Bandit_PrepearingShotState : IState
 {
     public Bandit b;
-    public float timeToShoot = 5;
+    public float timeToShoot = 2;
     public float patrolSpeed = 2f;
     public float patrolFrequency = 3f;
     private float timer = 0;
@@ -124,17 +124,26 @@ public class Bandit_PassThroughState : IState
         float camX = cam.transform.position.x;
         /*
          * Esto es para que vaya haiendo "pingpong"
-        if (owner.transform.position.x >= camX + halfWidth)
+        if (owner.transform.position.x >= camX + halfWidth){
             inverseDirection = true;
-        else if (owner.transform.position.x <= camX - halfWidth)
+            EnemyTracker.instance.AddEnemyDead();
+        }
+        else if (owner.transform.position.x <= camX - halfWidth){
             inverseDirection = false;
+            EnemyTracker.instance.AddEnemyDead();
+        }
         */
         //stas lineas de abajo por si se quiere que vaya de punto a a b y ya
         if (inverseDirection && owner.transform.position.x < camX - halfWidth)
+        {
             owner.SetActive(false);
+            //EnemyTracker.instance.AddEnemyDead(); esto lo marca como que te lo has cargado
+        }
         else if (!inverseDirection && owner.transform.position.x > camX + halfWidth)
+        {
             owner.SetActive(false);
-
+            //EnemyTracker.instance.AddEnemyDead();
+        }
         float inverted = 1f;
         if (inverseDirection)
             inverted *= -1;

@@ -2314,9 +2314,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168523798902847424, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
+      propertyPath: speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168523798902847424, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
       propertyPath: stripesController
       value: 
       objectReference: {fileID: 317173631}
+    - target: {fileID: 6168523798902847424, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
+      propertyPath: loopState.loopSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8182731924042814818, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
       propertyPath: m_Name
       value: BossVulture
