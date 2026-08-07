@@ -11,6 +11,7 @@ public class VultureBoss : Enemy
     [SerializeField] public Animator animator;
     [SerializeField] public Rigidbody2D rigidbody;
     [SerializeField] public HealthBehaviour healthBehaviour;
+    [SerializeField] public SpriteRenderer spriteRenderer;
 
     [Header("Objects")]
     [SerializeField] public GameObject blowZone;
@@ -74,6 +75,13 @@ public class VultureBoss : Enemy
 
         controller = this.GetComponent<FSMController>();
         controller.StartFSM(appearingState);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void Update()
+    {
+        System.Type state = controller.GetCurrentStateType();
+        spriteRenderer.flipX = state != typeof(VultureBoss_TackleState) && state != typeof(VultureBoss_TackleShotState);
     }
     void OnVultureDies()
     {

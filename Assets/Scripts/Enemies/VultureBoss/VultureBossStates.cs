@@ -50,7 +50,9 @@ public class VultureBoss_LoopState : IState
     }
     public void Update(GameObject owner)
     {
-        Vector2 center = Vector2.zero;//Controller.instance.transform.position + new Vector3(seekOffset.x, seekOffset.y, 0);
+
+        Vector2 center = Vector2.zero;
+        //Vector2 center = Controller.instance.transform.position + new Vector3(seekOffset.x, seekOffset.y, 0);
         Vector2 offset = new Vector2(
             Mathf.Cos(phase) * amplitude,
             Mathf.Sin(phase * 2f) * height);
