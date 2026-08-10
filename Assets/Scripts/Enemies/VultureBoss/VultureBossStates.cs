@@ -207,6 +207,7 @@ public class VultureBoss_TackleState : IState
         index = 0;
         timer = signalInterval;
         signaling = true;
+        v.animator.SetTrigger("CastAttack");
     }
     public void Update(GameObject owner)
     {
@@ -246,6 +247,7 @@ public class VultureBoss_TackleState : IState
     }
     public void Exit(GameObject owner)
     {
+        v.animator.SetTrigger("EndAttack");
         v.rigidbody.linearVelocity = Vector2.zero;
         foreach (Stripe s in stripes)
             s.renderer.enabled = false;
@@ -289,6 +291,7 @@ public class VultureBoss_TackleShotState : IState
     public void Enter(GameObject owner)
     {
         v = owner.GetComponent<VultureBoss>();
+        v.animator.SetTrigger("CastAttack");
         stripes = new List<Stripe>();
         foreach (string stripeName in stripeNames)
             stripes.Add(v.stripesController.GetStripe(stripeName));
@@ -330,6 +333,7 @@ public class VultureBoss_TackleShotState : IState
     }
     public void Exit(GameObject owner)
     {
+        v.animator.SetTrigger("EndAttack");
         v.rigidbody.linearVelocity = Vector2.zero;
         foreach (Stripe s in stripes)
             s.renderer.enabled = false;

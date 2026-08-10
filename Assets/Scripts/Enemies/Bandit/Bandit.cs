@@ -54,7 +54,7 @@ public class Bandit : Enemy
 
     void OnBanditDies()
     {
-        EnemyTracker.instance.AddEnemyDead();
+        //EnemyTracker.instance.AddEnemyDead();
         this.gameObject.SetActive(false);
     }
     void OnBanditHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)

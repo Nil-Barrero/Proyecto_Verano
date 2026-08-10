@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9cf8a5b4b6586418332d84ea0d54de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: {x: 0, y: 0}
+  windForce: {x: -7.5, y: 0}
 --- !u!1 &8182731924042814818
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +239,7 @@ SpriteRenderer:
   m_Size: {x: 0.93442625, y: 0.9918033}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &7225759790541047242
@@ -331,12 +331,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assignedZoneReference: {fileID: 0}
-  speed: 1
+  speed: 2.5
   damageValue: 1
   targetDistanceTolerance: 0.3
   animator: {fileID: 0}
   rigidbody: {fileID: 0}
   healthBehaviour: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   blowZone: {fileID: 5499618302461892461}
   stripesController: {fileID: 0}
   controller: {fileID: 0}
@@ -347,8 +348,10 @@ MonoBehaviour:
     seekOffset: {x: 0, y: 4}
     amplitude: 4
     height: 1.5
-    loopSpeed: 1
-    loopDuration: 5
+    loopSpeed: 2.5
+    minLoopDuration: 5
+    maxLoopDuration: 8
+    enrageSpeedMultiplier: 1.5
     minTimeToShoot: 1
     maxTimeToShoot: 2
   prepearingBlowState:
@@ -386,6 +389,8 @@ MonoBehaviour:
     tackleSpeed: 20
     positionTolerance: 0.3
     shotCount: 4
+  returningToLoopState:
+    positionTolerance: 0.3
   special1Transition: 50
   weightShift: 20
   enrageThreshold: 20
@@ -431,7 +436,7 @@ Animator:
   m_GameObject: {fileID: 8182731924042814818}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 89182956ad385c1439cec8fb2055ac0c, type: 2}
+  m_Controller: {fileID: 9100000, guid: c6e36a3f472a9ed49bf88b2010b121a4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -2269,10 +2269,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 202711937247459551, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
-      propertyPath: windForce.x
-      value: -7.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6063234657930812073, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.1
@@ -2314,17 +2310,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168523798902847424, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
-      propertyPath: speed
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6168523798902847424, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
       propertyPath: stripesController
       value: 
       objectReference: {fileID: 317173631}
-    - target: {fileID: 6168523798902847424, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
-      propertyPath: loopState.loopSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8182731924042814818, guid: 07301faeabcb9f444ba6a0e7aaace52d, type: 3}
       propertyPath: m_Name
       value: BossVulture

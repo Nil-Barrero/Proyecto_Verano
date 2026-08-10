@@ -110,11 +110,13 @@ public class Vulture_WaitingToAttackState : IState
     public float waitingToAttackTime = 3;
     [SerializeField] float timer = 0;
     [SerializeField] Vector3 constantDistanceToPlayer;
+    Vulture v;
     public void Enter(GameObject owner)
     {
+        v = owner.GetComponent<Vulture>();
+        v.animator.SetTrigger("CastAttack");
         timer = waitingToAttackTime;
         constantDistanceToPlayer = owner.transform.position - Controller.instance.transform.position;
-       
     }
     public void Update(GameObject owner)
     {
@@ -168,6 +170,7 @@ public class Vulture_AttackState : IState
     public void Exit(GameObject owner)
     {
         v.rigidbody.linearVelocity = Vector2.zero;
+        v.animator.SetTrigger("EndAttack");
     }
 }
 
