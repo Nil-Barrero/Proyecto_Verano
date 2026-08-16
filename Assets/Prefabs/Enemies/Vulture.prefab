@@ -150,7 +150,7 @@ MonoBehaviour:
   healthBehaviour: {fileID: 0}
   controller: {fileID: 0}
   appearingState:
-    v: {fileID: 1640565977649691166}
+    v: {fileID: 0}
   loopState:
     seekOffset: {x: 0, y: 4}
     amplitude: 2
@@ -159,7 +159,7 @@ MonoBehaviour:
   goingToAttackPosState:
     speedMult: 2.5
     chargeDistance: 4
-    v: {fileID: 1640565977649691166}
+    v: {fileID: 0}
   waitingToAttackState:
     waitingToAttackTime: 3
     timer: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   attackState:
     attackSpeed: 20
   returningToLoopPosState:
-    v: {fileID: 1640565977649691166}
+    v: {fileID: 0}
 --- !u!114 &2665579282479710297
 MonoBehaviour:
   m_ObjectHideFlags: 0
