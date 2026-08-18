@@ -22,6 +22,7 @@ public class Bandit_AppearingState : IState
     }
 }
 
+
 [System.Serializable]
 public class Bandit_PrepearingShotState : IState
 {
@@ -30,14 +31,22 @@ public class Bandit_PrepearingShotState : IState
     public float patrolSpeed = 2f;
     public float patrolFrequency = 3f;
     private float timer = 0;
+    float side;
+    Camera cam;
     public void Enter(GameObject owner)
     {
         b = owner.GetComponent<Bandit>();
         timer = timeToShoot;
+        cam = Camera.main;
+        side = Mathf.Sign(owner.transform.position.x - Controller.instance.transform.position.x);
     }
     public void Update(GameObject owner)
     {
-        b.rigidbody.linearVelocityX = Mathf.Sin(timer * patrolFrequency) * patrolSpeed;
+        float targetX = Controller.instance.transform.position.x + side * b.shootDistance + Mathf.Sin(timer * patrolFrequency) * patrolSpeed;
+        float halfWidth = cam.orthographicSize * cam.aspect;
+        float camX = cam.transform.position.x;
+        targetX = Mathf.Clamp(targetX, camX - halfWidth, camX + halfWidth);
+        b.rigidbody.linearVelocityX = targetX - owner.transform.position.x;
         timer -= Time.deltaTime;
         if (timer <= 0)
             b.controller.ChangeState(b.shootingState);
