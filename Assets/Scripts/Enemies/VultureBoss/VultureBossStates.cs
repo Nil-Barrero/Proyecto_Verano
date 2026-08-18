@@ -281,12 +281,15 @@ public class VultureBoss_PrepearingTackleShotState : IState
 public class VultureBoss_TackleShotState : IState
 {
     public List<string> stripeNames;
+    public float signalInterval = 1f;
     public float tackleSpeed = 20f;
     public float positionTolerance = 0.3f;
     public int shotCount = 4;
     VultureBoss v;
     List<Stripe> stripes;
     int index;
+    float timer;
+    bool signaling;
 
     public void Enter(GameObject owner)
     {
@@ -296,39 +299,56 @@ public class VultureBoss_TackleShotState : IState
         foreach (string stripeName in stripeNames)
             stripes.Add(v.stripesController.GetStripe(stripeName));
         foreach (Stripe stripe in stripes)
-        {
-            stripe.renderer.enabled = true;
             stripe.renderer.color = new Color(0, 0, 0, .2f);
-        }
         index = 0;
-        owner.transform.position = stripes[0].startPoint.position;
+        timer = signalInterval;
+        signaling = true;
     }
     public void Update(GameObject owner)
     {
-        Vector2 target = stripes[index].endPoint.position;
-        Vector2 dir = target - (Vector2)owner.transform.position;
-        v.rigidbody.linearVelocity = dir.normalized * tackleSpeed;
-        if (Vector2.Distance(owner.transform.position, target) < positionTolerance)
+        if (signaling)
         {
-            stripes[index].renderer.color = new Color(0, 0, 0, 0);
-            index++;
-            if (index >= stripes.Count)
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
             {
-                v.rigidbody.linearVelocity = Vector2.zero;
-                for (int i = 0; i < shotCount; i++)
+                stripes[index].renderer.enabled = true;
+                index++;
+                timer = signalInterval;
+                if (index >= stripes.Count)
                 {
-                    float angle = 45f + i * 90f;
-                    Vector2 shotDir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-                    GameObject bullet = PoolingManager.instance.GetInstanceOfClass("Bullet");
-                    bullet.transform.position = (Vector2)owner.transform.position + shotDir * 1f;
-                    bullet.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
-                    bullet.SetActive(true);
-                    bullet.GetComponent<Bullet>().spawner = owner.gameObject;
+                    signaling = false;
+                    index = 0;
+                    owner.transform.position = stripes[0].startPoint.position;
                 }
-                v.controller.ChangeState(v.returningToLoopState);
-                return;
             }
-            owner.transform.position = stripes[index].startPoint.position;
+        }
+        else
+        {
+            Vector2 target = stripes[index].endPoint.position;
+            Vector2 dir = target - (Vector2)owner.transform.position;
+            v.rigidbody.linearVelocity = dir.normalized * tackleSpeed;
+            if (Vector2.Distance(owner.transform.position, target) < positionTolerance)
+            {
+                stripes[index].renderer.color = new Color(0, 0, 0, 0);
+                index++;
+                if (index >= stripes.Count)
+                {
+                    v.rigidbody.linearVelocity = Vector2.zero;
+                    for (int i = 0; i < shotCount; i++)
+                    {
+                        float angle = 45f + i * 90f;
+                        Vector2 shotDir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+                        GameObject bullet = PoolingManager.instance.GetInstanceOfClass("Bullet");
+                        bullet.transform.position = (Vector2)owner.transform.position + shotDir * 1f;
+                        bullet.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+                        bullet.SetActive(true);
+                        bullet.GetComponent<Bullet>().spawner = owner.gameObject;
+                    }
+                    v.controller.ChangeState(v.returningToLoopState);
+                    return;
+                }
+                owner.transform.position = stripes[index].startPoint.position;
+            }
         }
     }
     public void Exit(GameObject owner)
