@@ -13,14 +13,17 @@ public class Vulture_AppearingState : IState
     }
     public void Update(GameObject owner)
     {
-        Vector2 targetPos = Controller.instance.transform.position + new Vector3(v.loopState.seekOffset.x, v.loopState.seekOffset.y);
+
+        //Esto es Nyil por si se kiere degar komo antes y que empieze el lup quando se situe enzima del gujador :D
+        //Vector2 targetPos = Controller.instance.transform.position + new Vector3(v.loopState.seekOffset.x, v.loopState.seekOffset.y);
+        Vector2 targetPos = Vector2.zero;
         Vector2 dir = targetPos - new Vector2(v.transform.position.x, v.transform.position.y) ;
         v.rigidbody.linearVelocity = dir.normalized * v.speed;
         if (Vector2.Distance(v.transform.position, targetPos) < v.targetDistanceTolerance)
             v.controller.ChangeState(v.loopState);
 
         v.spriteRenderer.flipX = (owner.transform.position.x < Controller.instance.transform.position.x);
-
+        
     }
     public void Exit(GameObject owner)
     {
@@ -36,9 +39,9 @@ public class Vulture_LoopState : IState
     public float amplitude = 4f;
     public float height = 1.5f;
     public float loopDuration = 5f;
-    
+
     Vulture v;
-    float phase;   
+    float phase;
     float timer;
     public void Enter(GameObject owner)
     {
@@ -49,7 +52,8 @@ public class Vulture_LoopState : IState
     }
     public void Update(GameObject owner)
     {
-        Vector2 center = Controller.instance.transform.position + new Vector3(seekOffset.x, seekOffset.y, 0);
+        Vector2 center = Vector2.zero;
+        //Vector2 center = Controller.instance.transform.position + new Vector3(seekOffset.x, seekOffset.y, 0);
         Vector2 offset = new Vector2(
             Mathf.Cos(phase) * amplitude,
             Mathf.Sin(phase * 2f) * height);
@@ -75,15 +79,21 @@ public class Vulture_LoopState : IState
 public class Vulture_GoingToAttackPosState : IState
 {
     public float speedMult = 2.5f;
+    public float chargeDistance = 4f;
     public Vulture v;
+    float side;
+
     public void Enter(GameObject owner)
     {
         v = owner.GetComponent<Vulture>();
+        side = Random.value < 0.5f ? -1f : 1f;
     }
     public void Update(GameObject owner)
     {
-        v.rigidbody.linearVelocity = Vector2.down * v.speed * speedMult;
-        if (owner.transform.position.y < Controller.instance.transform.position.y)
+        Vector2 targetPos = new Vector2(Controller.instance.transform.position.x + side * chargeDistance, Controller.instance.transform.position.y);
+        Vector2 dir = targetPos - (Vector2)owner.transform.position;
+        v.rigidbody.linearVelocity = dir.normalized * v.speed * speedMult;
+        if (Vector2.Distance(owner.transform.position, targetPos) < v.targetDistanceTolerance)
             v.controller.ChangeState(v.waitingToAttackState);
 
         v.spriteRenderer.flipX = (owner.transform.position.x < Controller.instance.transform.position.x);
@@ -98,25 +108,31 @@ public class Vulture_GoingToAttackPosState : IState
 public class Vulture_WaitingToAttackState : IState
 {
     public float waitingToAttackTime = 3;
-    [SerializeField]float timer = 0;
+    [SerializeField] float timer = 0;
     [SerializeField] Vector3 constantDistanceToPlayer;
-    public void Enter(GameObject owner) {
+    Vulture v;
+    public void Enter(GameObject owner)
+    {
+        v = owner.GetComponent<Vulture>();
+        v.animator.SetTrigger("CastAttack");
         timer = waitingToAttackTime;
-        constantDistanceToPlayer = Controller.instance.transform.position - owner.transform.position;
+        constantDistanceToPlayer = owner.transform.position - Controller.instance.transform.position;
     }
-    public void Update(GameObject owner){
+    public void Update(GameObject owner)
+    {
         owner.transform.position = new Vector2(Controller.instance.transform.position.x + constantDistanceToPlayer.x, owner.transform.position.y);
         timer -= Time.deltaTime;
-        if(timer < 0)
+        float halfWidth = Camera.main.orthographicSize * Camera.main.aspect;
+        float camX = Camera.main.transform.position.x;
+        if (timer < 0 || (owner.transform.position.x <= camX - halfWidth || owner.transform.position.x >= camX + halfWidth))
         {
             Vulture vulture = owner.GetComponent<Vulture>();
             vulture.controller.ChangeState(vulture.attackState);
-        }   
-
-       
+        }
     }
-    public  void Exit(GameObject owner){
-        
+    public void Exit(GameObject owner)
+    {
+
     }
 }
 
@@ -124,7 +140,7 @@ public class Vulture_WaitingToAttackState : IState
 public class Vulture_AttackState : IState
 {
     [Header("Params")]
-    public float attackSpeed = 20f; 
+    public float attackSpeed = 20f;
 
     Vulture v;
     Vector2 start;
@@ -138,7 +154,7 @@ public class Vulture_AttackState : IState
 
         start = owner.transform.position;
         Vector2 player = Controller.instance.transform.position;
-        end = player + (player - start);  
+        end = player + (player - start);
         dir = (end - start).normalized;
         v.spriteRenderer.flipX = dir.x < 0;
     }
@@ -154,6 +170,7 @@ public class Vulture_AttackState : IState
     public void Exit(GameObject owner)
     {
         v.rigidbody.linearVelocity = Vector2.zero;
+        v.animator.SetTrigger("EndAttack");
     }
 }
 
@@ -167,7 +184,8 @@ public class Vulture_ReturningToLoopPosState : IState
     }
     public void Update(GameObject owner)
     {
-        Vector2 targetPos = Controller.instance.transform.position + new Vector3(v.loopState.seekOffset.x, v.loopState.seekOffset.y);
+        //Vector2 targetPos = Controller.instance.transform.position + new Vector3(v.loopState.seekOffset.x, v.loopState.seekOffset.y);
+        Vector2 targetPos = Vector2.zero;
         Vector2 dir = targetPos - new Vector2(v.transform.position.x, v.transform.position.y) ;
         v.rigidbody.linearVelocity = dir.normalized * v.speed;
         if (Vector2.Distance(v.transform.position, targetPos) < v.targetDistanceTolerance)

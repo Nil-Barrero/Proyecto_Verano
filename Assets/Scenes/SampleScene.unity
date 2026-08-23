@@ -242,6 +242,11 @@ MonoBehaviour:
     poolAmount: 20
     createOtherIfExceded: 1
     pools: []
+  - prefabToPool: {fileID: 4298272453453010786, guid: e4149453d655437429490a8ccd44821c, type: 3}
+    poolName: BanditVariant
+    poolAmount: 20
+    createOtherIfExceded: 1
+    pools: []
 --- !u!4 &260308882
 Transform:
   m_ObjectHideFlags: 0

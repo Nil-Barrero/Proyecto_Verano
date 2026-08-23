@@ -8,6 +8,7 @@ public class Bandit : Enemy
     [SerializeField] public float targetDistanceTolerance;
     [SerializeField] public float shootDistance = 4f;
     [SerializeField] public GameObject lastBullet;
+    [SerializeField] public bool variant = false;
 
     [Header("Components")]
     [SerializeField] public Animator animator;
@@ -20,6 +21,7 @@ public class Bandit : Enemy
     [SerializeField] public Bandit_PrepearingShotState prepearingState;
     [SerializeField] public Bandit_ShootingState shootingState;
     [SerializeField] public Bandit_HidingState hidingState;
+    [SerializeField] public Bandit_PassThroughState passThroughState;
 
     protected override void OnEnable()
     {
@@ -27,7 +29,10 @@ public class Bandit : Enemy
         if (controller != null)
         {
             rigidbody.linearVelocity = Vector2.zero;
-            controller.ChangeState(appearingState);
+            if (variant)
+                controller.StartFSM(passThroughState);
+            else
+                controller.StartFSM(appearingState);
         }
     }
     void Start()
@@ -41,12 +46,15 @@ public class Bandit : Enemy
         healthBehaviour.OnAlterHealth.AddListener(OnBanditHealthAltered);
 
         controller = this.GetComponent<FSMController>();
-        controller.StartFSM(appearingState);
+        if (variant)
+            controller.StartFSM(passThroughState);
+        else
+            controller.StartFSM(appearingState);
     }
 
     void OnBanditDies()
     {
-        EnemyTracker.instance.AddEnemyDead();
+        //EnemyTracker.instance.AddEnemyDead();
         this.gameObject.SetActive(false);
     }
     void OnBanditHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)

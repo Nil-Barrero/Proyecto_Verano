@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: c73939a947e7ad449b09ae9fdf1ec05a
+guid: 84f18f65090a0c844af416fd3ad11426
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2633481834116499376
-    second: Buitre 1_0
+      213: -1886372386431663008
+    second: BuitreAtaque_0
   - first:
-      213: -935764420949152579
-    second: Buitre 1_1
+      213: 2321076536922037871
+    second: BuitreAtaque_1
   - first:
-      213: 4376012648328308134
-    second: Buitre 1_2
-  - first:
-      213: 8440153501698556429
-    second: Buitre 1_3
+      213: -7787415893997990932
+    second: BuitreAtaque_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buitre 1_0
+      name: S_VultureAttack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,20 +115,20 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 2, z: 0, w: 0}
+      border: {x: 1, y: 2, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 058ba03893ef37bd0800000000000000
-      internalID: -2633481834116499376
+      spriteID: cdfbe6b4e2adbf44785cd8a8b37b0ad6
+      internalID: 1752042562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buitre 1_1
+      name: S_VultureAttack_1
       rect:
         serializedVersion: 2
         x: 32
@@ -140,20 +137,20 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 11}
+      border: {x: 0, y: 7, z: 0, w: 5}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dbc60ef873f7303f0800000000000000
-      internalID: -935764420949152579
+      spriteID: cf7fe59b4e7ed8f41877720a3ae58757
+      internalID: -1655013930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buitre 1_2
+      name: S_VultureAttack_2
       rect:
         serializedVersion: 2
         x: 64
@@ -162,20 +159,20 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 11}
+      border: {x: 0, y: 2, z: 2, w: 8}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6a5a93c8158babc30800000000000000
-      internalID: 4376012648328308134
+      spriteID: 738bd41fe96f774418fda17bda99c648
+      internalID: 919869757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buitre 1_3
+      name: S_VultureAttack_3
       rect:
         serializedVersion: 2
         x: 96
@@ -184,14 +181,14 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 2, z: 0, w: 2}
+      border: {x: 2, y: 2, z: 0, w: 8}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d02038654e2712570800000000000000
-      internalID: 8440153501698556429
+      spriteID: 5023d2218698a6c4f8ecc933ee0b0ebc
+      internalID: -294932932
       vertices: []
       indices: 
       edges: []
@@ -200,7 +197,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ef90eecbb5ebc4941b9f0076978fc51e
+    spriteID: 4172af47dfbcc2846b9677e2185e5d18
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +207,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Buitre 1_0: -2633481834116499376
-      Buitre 1_1: -935764420949152579
-      Buitre 1_2: 4376012648328308134
-      Buitre 1_3: 8440153501698556429
+      S_VultureAttack_0: 1752042562
+      S_VultureAttack_1: -1655013930
+      S_VultureAttack_2: 919869757
+      S_VultureAttack_3: -294932932
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
