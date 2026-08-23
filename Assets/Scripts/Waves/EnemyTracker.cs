@@ -14,6 +14,8 @@ public class EnemyTracker : MonoBehaviour
     {
         _enemiesDeads++;
 
+        Debug.Log(_enemiesDeads);
+
         short condition = _zoneManager.GetWaveEnemiesRequired();
         if (condition == _enemiesDeads)
         {
