@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 6c1684ccb436a884ba305bde1b0e7fea
+guid: d935a1abb94fd8c48bbbcc62f8980ed4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3915735124074065095
-    second: BuitreBoss 1_0
-  - first:
-      213: -1679615154088381037
-    second: BuitreBoss 1_1
-  - first:
-      213: 6647229629850476367
-    second: BuitreBoss 1_2
-  - first:
-      213: -6657517895361264618
-    second: BuitreBoss 1_3
+      213: -3385220073331973507
+    second: Luke & Jolly_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,32 +85,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -148,89 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: S_VultureBossIdle_0
+      name: Luke & Jolly_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 122
-        height: 122
+        width: 121
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 5, y: 0, z: 4, w: 2}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5fc9a2c828898a24d922bc42e09eaa1b
-      internalID: 1493761356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S_VultureBossIdle_1
-      rect:
-        serializedVersion: 2
-        x: 122
-        y: 0
-        width: 122
-        height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 8, y: 14, z: 5, w: 46}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6887a2e8237245c48935cdab09ab04c0
-      internalID: -1704678956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S_VultureBossIdle_2
-      rect:
-        serializedVersion: 2
-        x: 244
-        y: 0
-        width: 122
-        height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 13, y: 30, z: 15, w: 29}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26796e30a0d1f9f479a5345fcbcc5157
-      internalID: 1988835143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S_VultureBossIdle_3
-      rect:
-        serializedVersion: 2
-        x: 366
-        y: 0
-        width: 122
-        height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 6, y: 12, z: 9, w: 30}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0aca67f8cd02cd409812273a20d9595
-      internalID: -1828780231
+      spriteID: d72a68a67484501d0800000000000000
+      internalID: -3385220073331973507
       vertices: []
       indices: 
       edges: []
@@ -239,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a23eef6778405364da4f6760ef903d2c
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -249,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      S_VultureBossIdle_0: 1493761356
-      S_VultureBossIdle_1: -1704678956
-      S_VultureBossIdle_2: 1988835143
-      S_VultureBossIdle_3: -1828780231
+      Luke & Jolly_0: -3385220073331973507
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
