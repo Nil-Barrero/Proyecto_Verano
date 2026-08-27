@@ -154,7 +154,7 @@ public class Vulture_AttackState : IState
 
         start = owner.transform.position;
         Vector2 player = Controller.instance.transform.position;
-        end = player + (player - start);
+        end = new Vector2(player.x + (player.x - start.x), start.y);
         dir = (end - start).normalized;
         v.spriteRenderer.flipX = dir.x < 0;
     }
