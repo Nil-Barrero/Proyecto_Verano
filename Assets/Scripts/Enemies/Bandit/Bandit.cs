@@ -54,12 +54,12 @@ public class Bandit : Enemy
 
     void OnBanditDies()
     {
-        //EnemyTracker.instance.AddEnemyDead();
         this.gameObject.SetActive(false);
     }
     void OnBanditHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
     {
-
+        if (health == 0)
+            EnemyTracker.instance.AddEnemyDead();
     }
     // Update is called once per frame
     void Update()
