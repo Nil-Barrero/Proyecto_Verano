@@ -120,7 +120,7 @@ public class Vulture_WaitingToAttackState : IState
     }
     public void Update(GameObject owner)
     {
-        owner.transform.position = new Vector2(Controller.instance.transform.position.x + constantDistanceToPlayer.x, owner.transform.position.y);
+        owner.transform.position = new Vector2(Controller.instance.transform.position.x + constantDistanceToPlayer.x, Controller.instance.transform.position.y);
         timer -= Time.deltaTime;
         float halfWidth = Camera.main.orthographicSize * Camera.main.aspect;
         float camX = Camera.main.transform.position.x;
