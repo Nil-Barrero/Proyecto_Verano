@@ -143,7 +143,7 @@ MonoBehaviour:
   assignedZoneReference: {fileID: 0}
   speed: 5
   damageValue: 1
-  targetDistanceTolerance: 1
+  targetDistanceTolerance: 0.5
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   rigidbody: {fileID: 0}
@@ -152,16 +152,16 @@ MonoBehaviour:
   appearingState:
     v: {fileID: 0}
   loopState:
-    seekOffset: {x: 0, y: 8}
+    seekOffset: {x: 0, y: 200}
     amplitude: 4
     height: 1.5
     loopDuration: 7
   goingToAttackPosState:
-    speedMult: 2.5
-    chargeDistance: 4
+    speedMult: 1
+    chargeDistance: 5
     v: {fileID: 0}
   waitingToAttackState:
-    waitingToAttackTime: 3
+    waitingToAttackTime: 1
     timer: 0
     constantDistanceToPlayer: {x: 0, y: 0, z: 0}
   attackState:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxhealth: 1
+  maxhealth: 2
   lifes: 0
   healOnSceneChanged: 1
   invincibilityOnDamage: 1
