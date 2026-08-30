@@ -80,6 +80,7 @@ public class Bandit_ShootingState : IState
         bullet.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
         bullet.SetActive(true);
         bullet.GetComponent<Bullet>().spawner = owner.gameObject;
+        bullet.GetComponent<Bullet>().SetLayer("EnemyBullet");
         b.lastBullet = bullet;
         b.controller.ChangeState(b.hidingState);
     }

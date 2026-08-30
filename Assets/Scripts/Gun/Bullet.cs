@@ -5,7 +5,6 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     [Range(1,10)][SerializeField] private float speed = 5.0f;
-    [Range(1,10)][SerializeField] private float knockbackForce = 2.0f;
     public GameObject spawner;
     private void Start()
     {
@@ -20,11 +19,10 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject != spawner) {
+        //if (collision.gameObject != spawner) {
             if(collision.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
                 hb.Damage();
             this.gameObject.SetActive(false); 
-        }
         Debug.Log("Colision con: " + collision.gameObject.name);
     }
 
@@ -32,4 +30,6 @@ public class Bullet : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    public void SetLayer(string layerName) { gameObject.layer = LayerMask.NameToLayer(layerName); }
 }
