@@ -15,6 +15,7 @@ namespace Character
         [SerializeField] private Vector2 groundBoxSize;
         [SerializeField] private float KnockbackForce;
         [SerializeField] private LayerMask KnockbackLayer;
+        private HealthBehaviour healthBehaviour;
 
         [Header("Movement Variables")]
         private float move = 0.0f;
