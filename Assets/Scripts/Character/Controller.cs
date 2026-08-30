@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Character
 {
-    public class Controller : MonoBehaviour
+    public class Controller : MonoBehaviour, IKnockbackble
     {
         public static Controller instance;
         [Header("Character Components")]
@@ -102,6 +102,11 @@ namespace Character
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireCube(groundManager.position, groundBoxSize);
+        }
+
+        public void ApplyKnockback(Vector2 dir, float force)
+        {
+            rb.AddForce(dir * force, ForceMode2D.Impulse);
         }
     }  
 }

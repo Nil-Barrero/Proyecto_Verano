@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     [Range(1,10)][SerializeField] private float speed = 5.0f;
+    [Range(1,10)][SerializeField] private float knockbackForce = 2.0f;
     public GameObject spawner;
     private void Start()
     {
@@ -22,6 +23,11 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject != spawner) {
             if(collision.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
                 hb.Damage();
+            if(collision.TryGetComponent<IKnockbackble>(out IKnockbackble kb))
+            {
+                Vector2 direction = rb.linearVelocity.normalized;
+                kb.ApplyKnockback(direction, knockbackForce);
+            }
             this.gameObject.SetActive(false); 
         }
         Debug.Log("Colision con: " + collision.gameObject.name);
