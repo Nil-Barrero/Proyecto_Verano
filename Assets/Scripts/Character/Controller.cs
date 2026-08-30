@@ -99,6 +99,7 @@ namespace Character
             bullet.transform.rotation = bulletSpawn.rotation;
             bullet.SetActive(true);
             bullet.GetComponent<Bullet>().spawner = this.gameObject;
+            bullet.GetComponent<Bullet>().SetLayer("PlayerBullet");
         }
 
         private void OnDrawGizmos()
@@ -123,6 +124,7 @@ namespace Character
 
             if (((1 << other.gameObject.layer) & KnockbackLayer) != 0)
             {
+                rb.linearVelocity = Vector2.zero;
                 Vector2 direction = this.transform.position - other.transform.position;
                 rb.AddForce(direction.normalized * KnockbackForce, ForceMode2D.Impulse);
             }
