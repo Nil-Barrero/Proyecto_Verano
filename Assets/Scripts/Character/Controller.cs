@@ -13,6 +13,8 @@ namespace Character
         private Rigidbody2D rb;
         [SerializeField] private Transform groundManager;
         [SerializeField] private Vector2 groundBoxSize;
+        [SerializeField] private float KnockbackForce;
+        [SerializeField] private LayerMask KnockbackLayer;
 
         [Header("Movement Variables")]
         private float move = 0.0f;
@@ -32,7 +34,8 @@ namespace Character
      private Vector3 mousePos;
      private Transform crosshair;
 
-     private void Awake()
+
+        private void Awake()
     {
         instance = this;
     }
@@ -102,6 +105,27 @@ namespace Character
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireCube(groundManager.position, groundBoxSize);
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Knockback(collision.gameObject);
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Knockback(collision.gameObject);
+        }
+
+        void Knockback(GameObject other)
+        {
+            //Activar cuando el jugador tenga vida
+            //if (GetComponent<HealthBehaviour>().IsInvincible()) return;
+
+            if (((1 << other.gameObject.layer) & KnockbackLayer) != 0)
+            {
+                Vector2 direction = this.transform.position - other.transform.position;
+                rb.AddForce(direction.normalized * KnockbackForce, ForceMode2D.Impulse);
+            }
         }
     }  
 }

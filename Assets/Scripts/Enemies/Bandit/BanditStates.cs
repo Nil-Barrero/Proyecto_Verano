@@ -42,11 +42,21 @@ public class Bandit_PrepearingShotState : IState
     }
     public void Update(GameObject owner)
     {
-        float targetX = Controller.instance.transform.position.x + side * b.shootDistance + Mathf.Sin(timer * patrolFrequency) * patrolSpeed;
-        float halfWidth = cam.orthographicSize * cam.aspect;
-        float camX = cam.transform.position.x;
-        targetX = Mathf.Clamp(targetX, camX - halfWidth, camX + halfWidth);
-        b.rigidbody.linearVelocityX = targetX - owner.transform.position.x;
+       
+        float distance = owner.transform.position.x - Controller.instance.transform.position.x;
+ 
+        if(Mathf.Abs(distance) > b.shootDistance)
+            b.rigidbody.linearVelocityX = Mathf.Sign(Controller.instance.transform.position.x - owner.transform.position.x) * b.speed;
+        else
+        {
+            float targetX = Controller.instance.transform.position.x + side * b.shootDistance + Mathf.Sin(timer * patrolFrequency) * patrolSpeed;
+            float halfWidth = cam.orthographicSize * cam.aspect;
+            float camX = cam.transform.position.x;
+            targetX = Mathf.Clamp(targetX, camX - halfWidth, camX + halfWidth);
+
+            b.rigidbody.linearVelocityX = targetX - b.transform.position.x;
+        }
+
         timer -= Time.deltaTime;
         if (timer <= 0)
             b.controller.ChangeState(b.shootingState);
