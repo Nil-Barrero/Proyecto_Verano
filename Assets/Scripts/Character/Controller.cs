@@ -30,9 +30,9 @@ namespace Character
         [SerializeField] private Transform bulletSpawn;
         [Range(0.1f, 1f)][SerializeField] private float fireRate = 0.5f;
 
-     [Header("Shoot & Aim Variable")]
-     private Vector3 mousePos;
-     private Transform crosshair;
+        [Header("Shoot & Aim Variable")]
+        private Vector3 mousePos;
+        private Transform crosshair;
 
 
         private void Awake()
@@ -43,6 +43,7 @@ namespace Character
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        healthBehaviour = GetComponent<HealthBehaviour>();
     }
 
     private void Update()
@@ -61,19 +62,22 @@ namespace Character
         {
             Jump();
         }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            healthBehaviour.Damage(1);
+        }
     }
 
         private void FixedUpdate()
         {
             Movement(move * Time.deltaTime);
         }
-
         private void Movement(float move)
         {
             Vector2 objectiveVel = new Vector2(move, rb.linearVelocityY);
             rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, objectiveVel, ref velocity, linearDamping);
         }
-
         private void Jump()
         {
             if(isGrounded)
@@ -82,7 +86,6 @@ namespace Character
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }      
         }
-
         private void AimMouse()
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -90,7 +93,6 @@ namespace Character
 
             //crosshair.position = mousePos;
         }
-
         private void Shoot()
         {
             //Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
@@ -101,7 +103,6 @@ namespace Character
             bullet.GetComponent<Bullet>().spawner = this.gameObject;
             bullet.GetComponent<Bullet>().SetLayer("PlayerBullet");
         }
-
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
