@@ -87,10 +87,11 @@ public class Vulture_GoingToAttackPosState : IState
     {
         v = owner.GetComponent<Vulture>();
         side = Random.value < 0.5f ? -1f : 1f;
+        owner.transform.position = new Vector2(Controller.instance.transform.position.x, Controller.instance.transform.position.y);
     }
     public void Update(GameObject owner)
     {
-        Vector2 targetPos = new Vector2(Controller.instance.transform.position.x + side * chargeDistance, Controller.instance.transform.position.y);
+        Vector2 targetPos = new Vector2(Controller.instance.transform.position.x + side * chargeDistance, owner.transform.position.y);
         Vector2 dir = targetPos - (Vector2)owner.transform.position;
         v.rigidbody.linearVelocity = dir.normalized * v.speed * speedMult;
         if (Vector2.Distance(owner.transform.position, targetPos) < v.targetDistanceTolerance)
@@ -120,7 +121,7 @@ public class Vulture_WaitingToAttackState : IState
     }
     public void Update(GameObject owner)
     {
-        owner.transform.position = new Vector2(Controller.instance.transform.position.x + constantDistanceToPlayer.x, Controller.instance.transform.position.y);
+        owner.transform.position = new Vector2(Controller.instance.transform.position.x + constantDistanceToPlayer.x, owner.transform.position.y);
         timer -= Time.deltaTime;
         float halfWidth = Camera.main.orthographicSize * Camera.main.aspect;
         float camX = Camera.main.transform.position.x;
@@ -164,7 +165,6 @@ public class Vulture_AttackState : IState
         v.rigidbody.linearVelocity = dir * attackSpeed;
         if (Vector2.Dot(end - (Vector2)owner.transform.position, dir) <= 0f)
             v.controller.ChangeState(v.returningToLoopPosState);
-
     }
 
     public void Exit(GameObject owner)

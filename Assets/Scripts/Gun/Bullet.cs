@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     [Range(1,10)][SerializeField] private float speed = 5.0f;
+    [Range(1,10)][SerializeField] private float knockbackForce = 2.0f;
     public GameObject spawner;
     private void Start()
     {

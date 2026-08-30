@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 6168523798902847424}
   - component: {fileID: 1864354027395610040}
   - component: {fileID: 714294445387556880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossVulture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,6 +386,7 @@ MonoBehaviour:
     - Stripe-SP2-2
     - Stripe-SP2-3
     - Stripe-SP2-4
+    signalInterval: 1
     tackleSpeed: 20
     positionTolerance: 0.3
     shotCount: 4
