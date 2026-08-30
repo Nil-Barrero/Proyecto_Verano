@@ -23,11 +23,6 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject != spawner) {
             if(collision.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
                 hb.Damage();
-            if(collision.TryGetComponent<IKnockbackble>(out IKnockbackble kb))
-            {
-                Vector2 direction = rb.linearVelocity.normalized;
-                kb.ApplyKnockback(direction, knockbackForce);
-            }
             this.gameObject.SetActive(false); 
         }
         Debug.Log("Colision con: " + collision.gameObject.name);

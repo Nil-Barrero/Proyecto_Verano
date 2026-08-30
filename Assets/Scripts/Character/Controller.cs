@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Character
 {
-    public class Controller : MonoBehaviour, IKnockbackble
+    public class Controller : MonoBehaviour
     {
         public static Controller instance;
         [Header("Character Components")]
@@ -13,6 +13,8 @@ namespace Character
         private Rigidbody2D rb;
         [SerializeField] private Transform groundManager;
         [SerializeField] private Vector2 groundBoxSize;
+        [SerializeField] private float KnockbackForce;
+        [SerializeField] private LayerMask KnockbackLayer;
 
         [Header("Movement Variables")]
         private float move = 0.0f;
@@ -32,7 +34,8 @@ namespace Character
      private Vector3 mousePos;
      private Transform crosshair;
 
-     private void Awake()
+
+        private void Awake()
     {
         instance = this;
     }
@@ -104,9 +107,25 @@ namespace Character
             Gizmos.DrawWireCube(groundManager.position, groundBoxSize);
         }
 
-        public void ApplyKnockback(Vector2 dir, float force)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            rb.AddForce(dir * force, ForceMode2D.Impulse);
+            Knockback(collision.gameObject);
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Knockback(collision.gameObject);
+        }
+
+        void Knockback(GameObject other)
+        {
+            //Activar cuando el jugador tenga vida
+            //if (GetComponent<HealthBehaviour>().IsInvincible()) return;
+
+            if (((1 << other.gameObject.layer) & KnockbackLayer) != 0)
+            {
+                Vector2 direction = this.transform.position - other.transform.position;
+                rb.AddForce(direction.normalized * KnockbackForce, ForceMode2D.Impulse);
+            }
         }
     }  
 }

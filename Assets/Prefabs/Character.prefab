@@ -156,6 +156,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundManager: {fileID: 3297550993130644339}
   groundBoxSize: {x: 0.8, y: 0.2}
+  KnockbackForce: 5
+  KnockbackLayer:
+    serializedVersion: 2
+    m_Bits: 384
   moveVelocity: 400
   linearDamping: 0.303
   jumpForce: 5
