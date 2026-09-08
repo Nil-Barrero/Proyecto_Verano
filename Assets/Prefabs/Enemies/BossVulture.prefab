@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9cf8a5b4b6586418332d84ea0d54de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: {x: -7.5, y: 0}
+  windForce: {x: -17, y: 0}
 --- !u!1 &8182731924042814818
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,11 +159,11 @@ GameObject:
   - component: {fileID: 6063234657930812073}
   - component: {fileID: 107920653254792459}
   - component: {fileID: 7225759790541047242}
-  - component: {fileID: -5996571444691778152}
   - component: {fileID: 2676945494340635431}
   - component: {fileID: 6168523798902847424}
   - component: {fileID: 1864354027395610040}
   - component: {fileID: 714294445387556880}
+  - component: {fileID: 8058285681857152588}
   m_Layer: 7
   m_Name: BossVulture
   m_TagString: Untagged
@@ -231,15 +231,15 @@ SpriteRenderer:
   m_SortingLayerID: -1713931553
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3915735124074065095, guid: 6c1684ccb436a884ba305bde1b0e7fea, type: 3}
+  m_Sprite: {fileID: 1493761356, guid: 6c1684ccb436a884ba305bde1b0e7fea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.93442625, y: 0.9918033}
+  m_Size: {x: 3.8125, y: 3.8125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &7225759790541047242
@@ -269,42 +269,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &-5996571444691778152
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8182731924042814818}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 2.15
 --- !u!114 &2676945494340635431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,3 +413,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &8058285681857152588
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8182731924042814818}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.014011502, y: -0.6694112}
+  m_SpriteTilingProperty:
+    border: {x: 0.15625, y: 0, z: 0.125, w: 0.0625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.8125, y: 3.8125}
+    newSize: {x: 3.8125, y: 3.8125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.4481928, y: 2.2368727}
+  m_EdgeRadius: 0
