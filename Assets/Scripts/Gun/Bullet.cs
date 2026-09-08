@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
             if(collision.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
                 hb.Damage();
             this.gameObject.SetActive(false); 
-        Debug.Log("Colision con: " + collision.gameObject.name);
+        //Debug.Log("Colision con: " + collision.gameObject.name);
     }
 
     private void OnBecameInvisible()

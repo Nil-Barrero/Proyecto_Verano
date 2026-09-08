@@ -100,6 +100,8 @@ public class VultureBoss : Enemy
     void OnVultureHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
     {
         //healthBehaviour.SetInvincibility(1.5f);
+        if (health == 0)
+            EnemyTracker.instance.AddEnemyDead();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
