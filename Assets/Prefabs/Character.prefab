@@ -162,7 +162,7 @@ MonoBehaviour:
     m_Bits: 384
   moveVelocity: 400
   linearDamping: 0.303
-  jumpForce: 5
+  jumpForce: 5.5
   isGrounded: 0
   layer:
     serializedVersion: 2
@@ -259,8 +259,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 1}
+  m_Offset: {x: -0.000000009731888, y: -0.081637}
+  m_Size: {x: 2.0000002, y: 0.8367296}
   m_Direction: 1
 --- !u!1 &6309695745440845343
 GameObject:
