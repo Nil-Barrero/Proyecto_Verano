@@ -12,7 +12,7 @@ public class VultureBoss_AppearingState : IState
     }
     public void Update(GameObject owner)
     {
-        Vector2 targetPos = Vector2.zero;//Controller.instance.transform.position + new Vector3(v.loopState.seekOffset.x, v.loopState.seekOffset.y);
+        Vector2 targetPos = Vector2.zero + v.loopState.seekOffset;//Controller.instance.transform.position + new Vector3(v.loopState.seekOffset.x, v.loopState.seekOffset.y);
         Vector2 dir = targetPos - new Vector2(v.transform.position.x, v.transform.position.y);
         v.rigidbody.linearVelocity = dir.normalized * v.speed;
         if (Vector2.Distance(v.transform.position, targetPos) < distanceToPatrol)
@@ -55,7 +55,7 @@ public class VultureBoss_LoopState : IState
     public void Update(GameObject owner)
     {
 
-        Vector2 center = Vector2.zero;
+        Vector2 center = Vector2.zero + seekOffset;
         //Vector2 center = Controller.instance.transform.position + new Vector3(seekOffset.x, seekOffset.y, 0);
         Vector2 offset = new Vector2(
             Mathf.Cos(phase) * amplitude,
@@ -372,10 +372,14 @@ public class VultureBoss_ReturningToLoopState : IState
     }
     public void Update(GameObject owner)
     {
-        Vector2 dir = Vector2.zero - (Vector2)owner.transform.position;
+        Vector2 targetPos = Vector2.zero + v.loopState.seekOffset;
+        Vector2 dir = targetPos - new Vector2(v.transform.position.x, v.transform.position.y);
         v.rigidbody.linearVelocity = dir.normalized * v.speed;
-        if (Vector2.Distance(owner.transform.position, Vector2.zero) < positionTolerance)
+        if (Vector2.Distance(v.transform.position, targetPos) < positionTolerance)
             v.controller.ChangeState(v.loopState);
+
+        //v.spriteRenderer.flipX = (targetPos.x < dir.x); Por si se quiere que mire hacia donde se mueve
+        v.spriteRenderer.flipX = (owner.transform.position.x < Controller.instance.transform.position.x); //siga mirando al jugador
     }
     public void Exit(GameObject owner)
     {
