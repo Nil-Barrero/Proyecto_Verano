@@ -1,7 +1,9 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Character
 {
@@ -37,38 +39,40 @@ namespace Character
 
 
         private void Awake()
-    {
-        instance = this;
-    }
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        healthBehaviour = GetComponent<HealthBehaviour>();
-    }
-
-    private void Update()
-    {
-        move = Input.GetAxisRaw("Horizontal") * moveVelocity;
-        isGrounded = Physics2D.OverlapBox(groundManager.position, groundBoxSize, 0.0f, layer);
-
-        AimMouse();
-
-        if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            instance = this;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        private void Start()
         {
-            Jump();
+            rb = GetComponent<Rigidbody2D>();
+            healthBehaviour = GetComponent<HealthBehaviour>();
+
+            healthBehaviour.OnDie.AddListener(OnControllerDie);
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        private void Update()
         {
-            healthBehaviour.Damage(1);
+            move = Input.GetAxisRaw("Horizontal") * moveVelocity;
+            isGrounded = Physics2D.OverlapBox(groundManager.position, groundBoxSize, 0.0f, layer);
+
+            AimMouse();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Shoot();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                healthBehaviour.Damage(1);
+            }
         }
-    }
 
         private void FixedUpdate()
         {
@@ -143,6 +147,10 @@ namespace Character
 
                     rb.AddForce(direction.normalized * KnockbackForce, ForceMode2D.Impulse);
             }
+        }
+        private void OnControllerDie()
+        {
+            SceneManager.LoadScene(0);
         }
     }  
 }

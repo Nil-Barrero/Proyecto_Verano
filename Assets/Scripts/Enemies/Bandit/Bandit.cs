@@ -66,4 +66,9 @@ public class Bandit : Enemy
     {
         
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
+            hb.Damage(damageValue);
+    }
 }
