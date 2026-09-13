@@ -24,6 +24,7 @@ public class Vulture : Enemy
     [SerializeField] public Vulture_AttackState attackState;
     [SerializeField] public Vulture_ReturningToLoopPosState returningToLoopPosState;
 
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -50,11 +51,12 @@ public class Vulture : Enemy
     }
     void OnVultureDies()
     {
-        EnemyTracker.instance.AddEnemyDead();
         this.gameObject.SetActive(false);
      }
     void OnVultureHealthAltered(int health, int maxhealth, int prevHealth, int prevMaxhealth)
     {
+        if(health == 0)
+            EnemyTracker.instance.AddEnemyDead();
         healthBehaviour.SetInvincibility(1.5f);
     }
     private void OnCollisionEnter2D(Collision2D collision)

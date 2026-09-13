@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7229115966803932788}
   - component: {fileID: 3506670449932923752}
   - component: {fileID: 5559410592116634544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bandit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,8 +131,9 @@ MonoBehaviour:
   speed: 10
   damageValue: 1
   targetDistanceTolerance: 0
-  shootDistance: 4
+  shootDistance: 10
   lastBullet: {fileID: 0}
+  variant: 0
   animator: {fileID: 0}
   rigidbody: {fileID: 0}
   healthBehaviour: {fileID: 0}
@@ -142,10 +143,15 @@ MonoBehaviour:
   prepearingState:
     b: {fileID: 0}
     timeToShoot: 5
+    patrolSpeed: 2
+    patrolFrequency: 3
   shootingState:
     b: {fileID: 0}
   hidingState:
     b: {fileID: 0}
+  passThroughState:
+    b: {fileID: 0}
+    timeBetweenShoots: 2
 --- !u!114 &6320888071905242991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,8 +231,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.52, y: 1.38}
+  m_Offset: {x: 0.0265438, y: -0.000000003164267}
+  m_Size: {x: 1.8563923, y: 1.3800106}
   m_Direction: 1
 --- !u!50 &5559410592116634544
 Rigidbody2D:

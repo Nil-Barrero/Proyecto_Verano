@@ -19,11 +19,10 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject != spawner) {
+        //if (collision.gameObject != spawner) {
             if(collision.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
                 hb.Damage();
             this.gameObject.SetActive(false); 
-        }
         Debug.Log("Colision con: " + collision.gameObject.name);
     }
 
@@ -31,4 +30,6 @@ public class Bullet : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    public void SetLayer(string layerName) { gameObject.layer = LayerMask.NameToLayer(layerName); }
 }
