@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZoneManager : MonoBehaviour
 {
@@ -79,7 +80,8 @@ public class ZoneManager : MonoBehaviour
             {
                 //End of level
                 //Como no hay final de momento lo único que hace es repetir de forma perpetua la última zona :p
-                _waveIndex = (short)(_waves.Count - 1);
+                //_waveIndex = (short)(_waves.Count - 1);
+                SceneManager.LoadScene(0);
             }
 
             SpawnZone(_waves[_waveIndex]._zones[0], _activeZones[_activeZones.Count - 1].EndX);
