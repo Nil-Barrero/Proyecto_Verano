@@ -16,7 +16,7 @@ public class Vulture_AppearingState : IState
 
         //Esto es Nyil por si se kiere degar komo antes y que empieze el lup quando se situe enzima del gujador :D
         //Vector2 targetPos = Controller.instance.transform.position + new Vector3(v.loopState.seekOffset.x, v.loopState.seekOffset.y);
-        Vector2 targetPos = Vector2.zero;
+        Vector2 targetPos = Vector2.zero + v.loopState.seekOffset;
         Vector2 dir = targetPos - new Vector2(v.transform.position.x, v.transform.position.y) ;
         v.rigidbody.linearVelocity = dir.normalized * v.speed;
         if (Vector2.Distance(v.transform.position, targetPos) < v.targetDistanceTolerance)
@@ -52,7 +52,7 @@ public class Vulture_LoopState : IState
     }
     public void Update(GameObject owner)
     {
-        Vector2 center = Vector2.zero;
+        Vector2 center = Vector2.zero + seekOffset;
         //Vector2 center = Controller.instance.transform.position + new Vector3(seekOffset.x, seekOffset.y, 0);
         Vector2 offset = new Vector2(
             Mathf.Cos(phase) * amplitude,
@@ -185,7 +185,7 @@ public class Vulture_ReturningToLoopPosState : IState
     public void Update(GameObject owner)
     {
         //Vector2 targetPos = Controller.instance.transform.position + new Vector3(v.loopState.seekOffset.x, v.loopState.seekOffset.y);
-        Vector2 targetPos = Vector2.zero;
+        Vector2 targetPos = Vector2.zero + v.loopState.seekOffset;
         Vector2 dir = targetPos - new Vector2(v.transform.position.x, v.transform.position.y) ;
         v.rigidbody.linearVelocity = dir.normalized * v.speed;
         if (Vector2.Distance(v.transform.position, targetPos) < v.targetDistanceTolerance)
