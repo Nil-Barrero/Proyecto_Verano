@@ -59,9 +59,12 @@ public class Vulture : Enemy
             EnemyTracker.instance.AddEnemyDead();
         healthBehaviour.SetInvincibility(1.5f);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (controller.GetCurrentStateType() == typeof(Vulture_AttackState) && collision.transform.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
+        if (!other.CompareTag("Player")) return;
+
+        if (controller.GetCurrentStateType() == typeof(Vulture_AttackState) && other.transform.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
             hb.Damage(damageValue);
     }
 }
