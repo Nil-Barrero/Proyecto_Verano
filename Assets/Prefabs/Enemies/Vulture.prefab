@@ -152,7 +152,7 @@ MonoBehaviour:
   appearingState:
     v: {fileID: 0}
   loopState:
-    seekOffset: {x: 0, y: 200}
+    seekOffset: {x: 0, y: 2.4}
     amplitude: 4
     height: 1.5
     loopDuration: 7
