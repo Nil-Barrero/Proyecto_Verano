@@ -340,43 +340,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 10}
   m_EdgeRadius: 0
---- !u!1 &301297940 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6018047258205487550, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
-  m_PrefabInstance: {fileID: 560146748}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &301297947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301297940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a12fe15d8b1d7948bbe612b4c32b03d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 5
-  maxhealth: 5
-  lifes: 3
-  healOnSceneChanged: 1
-  invincibilityOnDamage: 1
-  damageInvincibilityTime: 0
-  fullDamageIgnoresInvincibility: 0
-  useLifes: 1
-  autoHealOnRespawn: 1
-  respawnInvincibilityTime: 2
-  onFinalDeath: 2
-  OnAlterHealth:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAlterLifes:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDie:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &426285153
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,21 +575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    - target: {fileID: 6347038057023797732, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8929368653447976009, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6018047258205487550, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 301297947}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada5c74511fd2ae4d902e6f976b16522, type: 3}
 --- !u!1 &619394800
 GameObject:
