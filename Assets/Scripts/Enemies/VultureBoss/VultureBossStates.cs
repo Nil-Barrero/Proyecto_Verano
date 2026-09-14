@@ -78,8 +78,8 @@ public class VultureBoss_LoopState : IState
             GameObject bullet = PoolingManager.instance.GetInstanceOfClass("Bullet");
             bullet.transform.position = (Vector2)owner.transform.position + dir * 1f;
             bullet.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
+            bullet.GetComponent<Bullet>().SetLayer("EnemyBullet");
             bullet.SetActive(true);
-            bullet.GetComponent<Bullet>().spawner = owner.gameObject;
         }
         timer += Time.deltaTime;
 
@@ -151,7 +151,7 @@ public class VultureBoss_BlowState : IState
             bullet.transform.position = (Vector2)owner.transform.position + dir * 1f;
             bullet.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
             bullet.SetActive(true);
-            bullet.GetComponent<Bullet>().spawner = owner.gameObject;
+            bullet.GetComponent<Bullet>().SetLayer("EnemyBullet");
         }
     }
     public void Exit(GameObject owner)
@@ -341,8 +341,8 @@ public class VultureBoss_TackleShotState : IState
                         GameObject bullet = PoolingManager.instance.GetInstanceOfClass("Bullet");
                         bullet.transform.position = (Vector2)owner.transform.position + shotDir * 1f;
                         bullet.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+                        bullet.GetComponent<Bullet>().SetLayer("EnemyBullet");
                         bullet.SetActive(true);
-                        bullet.GetComponent<Bullet>().spawner = owner.gameObject;
                     }
                     v.controller.ChangeState(v.returningToLoopState);
                     return;

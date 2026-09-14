@@ -79,7 +79,6 @@ public class Bandit_ShootingState : IState
         bullet.transform.position = (Vector2)owner.transform.position + dir * 1f;
         bullet.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
         bullet.SetActive(true);
-        bullet.GetComponent<Bullet>().spawner = owner.gameObject;
         bullet.GetComponent<Bullet>().SetLayer("EnemyBullet");
         b.lastBullet = bullet;
         b.controller.ChangeState(b.hidingState);
@@ -137,7 +136,7 @@ public class Bandit_PassThroughState : IState
             bullet.transform.position = (Vector2)owner.transform.position + dir * 1f;
             bullet.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
             bullet.SetActive(true);
-            bullet.GetComponent<Bullet>().spawner = owner.gameObject;
+            bullet.GetComponent<Bullet>().SetLayer("EnemyBullet");
         }
 
         float halfWidth = cam.orthographicSize * cam.aspect;
