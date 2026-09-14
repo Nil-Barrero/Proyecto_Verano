@@ -16,6 +16,7 @@ namespace Character
         [SerializeField] private Transform groundManager;
         [SerializeField] private Vector2 groundBoxSize;
         [SerializeField] private float KnockbackForce;
+        [SerializeField] private float invencibilityTime;
         [SerializeField] private LayerMask KnockbackLayer;
         private HealthBehaviour healthBehaviour;
 
@@ -49,6 +50,7 @@ namespace Character
             healthBehaviour = GetComponent<HealthBehaviour>();
 
             healthBehaviour.OnDie.AddListener(OnControllerDie);
+            healthBehaviour.OnAlterHealth.AddListener(OnHealthAlterate);
         }
 
         private void Update()
@@ -116,8 +118,7 @@ namespace Character
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            ContactPoint2D contact = collision.GetContact(0);
-           
+            ContactPoint2D contact = collision.GetContact(0);  
             Knockback(collision.gameObject, contact.normal);
         }
         private void OnTriggerEnter2D(Collider2D collision)
@@ -128,8 +129,7 @@ namespace Character
 
         void Knockback(GameObject other, Vector2 dir)
         {
-            //Activar cuando el jugador tenga vida
-            //if (GetComponent<HealthBehaviour>().IsInvincible()) return;
+            if (GetComponent<HealthBehaviour>().IsInvincible()) return;
 
             if (((1 << other.gameObject.layer) & KnockbackLayer) != 0)
             {
@@ -145,12 +145,17 @@ namespace Character
                 else
                     direction = dir;
 
-                    rb.AddForce(direction.normalized * KnockbackForce, ForceMode2D.Impulse);
+                rb.AddForce(direction.normalized * KnockbackForce, ForceMode2D.Impulse);
             }
         }
         private void OnControllerDie()
         {
             SceneManager.LoadScene(0);
+        }
+
+        private void OnHealthAlterate(int health, int maxHealth, int prevHealth, int prevMaxHealth)
+        {
+            healthBehaviour.SetInvincibility(invencibilityTime);
         }
     }  
 }
