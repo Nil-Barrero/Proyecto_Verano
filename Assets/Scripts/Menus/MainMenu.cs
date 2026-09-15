@@ -10,7 +10,8 @@ public class MainMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       UIManager.Instance.SetDropdown(_resolutionDropdown, UIManager.Instance.GetResolutionOptions().optionDatas, UIManager.Instance.GetResolutionOptions().index, OnResolutionChanged);
+        var resolutionOptions = UIManager.Instance.GetResolutionOptions();
+       UIManager.Instance.SetDropdown(_resolutionDropdown, resolutionOptions.optionDatas, resolutionOptions.index, OnResolutionChanged);
     }
 
     // Update is called once per frame
