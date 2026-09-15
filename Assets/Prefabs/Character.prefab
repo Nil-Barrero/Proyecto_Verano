@@ -292,7 +292,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4, y: 1.8}
   m_EdgeRadius: 0
 --- !u!50 &7309958892754569346
 Rigidbody2D:
@@ -346,7 +346,7 @@ MonoBehaviour:
   isGrounded: 0
   layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   bulletPrefab: {fileID: 8686957285629018710, guid: a21eb930451a42a09ad201cafbe5a3bf, type: 3}
   bulletSpawn: {fileID: 3087626231558121653}
   fireRate: 0.5
@@ -484,7 +484,7 @@ Transform:
   m_GameObject: {fileID: 6309695745440845343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -627,7 +627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 200}
+  m_AnchoredPosition: {x: -500, y: 200}
   m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4272683499203582750
