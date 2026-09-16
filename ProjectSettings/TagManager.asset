@@ -12,11 +12,11 @@ TagManager:
   - Player
   - Water
   - UI
-  - Floor
+  - Ground
   - Enemy
   - EnemyBullet
   - PlayerBullet
-  - 
+  - Ground_NC
   - 
   - 
   - 

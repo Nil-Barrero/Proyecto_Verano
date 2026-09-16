@@ -150,11 +150,13 @@ namespace Character
         }
         private void OnControllerDie()
         {
-            SceneManager.LoadScene(0);
+            
         }
 
         private void OnHealthAlterate(int health, int maxHealth, int prevHealth, int prevMaxHealth)
         {
+            if(healthBehaviour.IsAlive())
+                SceneManager.LoadScene(0);
             healthBehaviour.SetInvincibility(invencibilityTime);
         }
     }  
