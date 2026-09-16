@@ -49,7 +49,7 @@ namespace Character
             rb = GetComponent<Rigidbody2D>();
             healthBehaviour = GetComponent<HealthBehaviour>();
 
-            healthBehaviour.OnDie.AddListener(OnControllerDie);
+            healthBehaviour.OnAlterLifes.AddListener(OnLifesAlterate);
             healthBehaviour.OnAlterHealth.AddListener(OnHealthAlterate);
         }
 
@@ -148,15 +148,14 @@ namespace Character
                 rb.AddForce(direction.normalized * KnockbackForce, ForceMode2D.Impulse);
             }
         }
-        private void OnControllerDie()
+        private void OnLifesAlterate(int lifes, int prevLifes)
         {
-            
+            if(lifes <= 0)
+                SceneManager.LoadScene(0);
         }
 
         private void OnHealthAlterate(int health, int maxHealth, int prevHealth, int prevMaxHealth)
         {
-            if(healthBehaviour.IsAlive())
-                SceneManager.LoadScene(0);
             healthBehaviour.SetInvincibility(invencibilityTime);
         }
     }  

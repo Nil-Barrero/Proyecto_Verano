@@ -212,6 +212,7 @@ public class HealthBehaviour : MonoBehaviour
 
     public bool IsInvincible() { return invincibility; }
     public bool IsAlive() { return health > 0 && (!useLifes || lifes > 0); }
+    public int GetLifes() { return lifes; }
     public float GetHealthPercent() { return maxhealth > 0 ? (float)health / maxhealth : 0f; }
     public float GetHealth() {  return health; }
     public float GetMaxHealth() { return maxhealth; }
