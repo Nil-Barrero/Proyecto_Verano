@@ -106,7 +106,7 @@ namespace Character
             GameObject bullet = PoolingManager.instance.GetInstanceOfClass("Bullet");
             bullet.transform.position = bulletSpawn.position;
             bullet.transform.rotation = bulletSpawn.rotation;
-            Debug.Log(bullet.transform.rotation);
+           // Debug.Log(bullet.transform.rotation);
             bullet.SetActive(true);
             bullet.GetComponent<Bullet>().SetLayer("PlayerBullet");
         }

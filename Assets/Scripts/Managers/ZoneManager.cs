@@ -76,12 +76,13 @@ public class ZoneManager : MonoBehaviour
             _waveIndex++;
             _zonesIndex = 0;
 
-            if(_waveIndex >= _waves.Count)
+            Debug.Log("_waveIndex = " + _waveIndex);
+            Debug.Log("_waves.Count = " + _waves.Count);
+            if(_waveIndex == _waves.Count)
             {
                 //End of level
                 //Como no hay final de momento lo único que hace es repetir de forma perpetua la última zona :p
-                //_waveIndex = (short)(_waves.Count - 1);
-                SceneManager.LoadScene(0);
+                _waveIndex = (short)(_waves.Count - 1);
             }
 
             SpawnZone(_waves[_waveIndex]._zones[0], _activeZones[_activeZones.Count - 1].EndX);
@@ -102,7 +103,15 @@ public class ZoneManager : MonoBehaviour
         _activeZones.Add(instance);
     }
 
-    public void NextWave() { _canAdvance = true; }
+    public void NextWave()
+    {
+        if(_waveIndex + 1 >= _waves.Count)
+        {
+            SceneManager.LoadScene(0);
+            return;
+        }
+        _canAdvance = true;
+    }
 
     public short GetWaveEnemiesRequired() { return _waves[_waveIndex].enemiesRequired; }
 }
