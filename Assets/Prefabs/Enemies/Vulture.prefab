@@ -155,7 +155,7 @@ MonoBehaviour:
     seekOffset: {x: 0, y: 2.4}
     amplitude: 4
     height: 1.5
-    loopDuration: 7
+    loopDuration: 3
   goingToAttackPosState:
     speedMult: 1
     chargeDistance: 5
