@@ -14,24 +14,13 @@ public class EnemyTracker : MonoBehaviour
     {
         _enemiesDeads++;
 
-        Debug.Log(_enemiesDeads);
+        //Debug.Log(_enemiesDeads);
 
         short condition = _zoneManager.GetWaveEnemiesRequired();
-        if (condition == _enemiesDeads)
+        if (_enemiesDeads >= condition)
         {
             _enemiesDeads = 0;
             _zoneManager.NextWave();
         }
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

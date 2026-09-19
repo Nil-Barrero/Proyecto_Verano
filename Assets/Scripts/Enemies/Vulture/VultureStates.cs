@@ -45,7 +45,7 @@ public class Vulture_LoopState : IState
     float timer;
     public void Enter(GameObject owner)
     {
-        Debug.Log(owner + " entered LoopState");
+        //Debug.Log(owner + " entered LoopState");
         v = owner.GetComponent<Vulture>();
         phase = Mathf.PI / 2f;
         timer = 0f;
@@ -71,7 +71,7 @@ public class Vulture_LoopState : IState
     }
     public void Exit(GameObject owner)
     {
-        Debug.Log(owner + " abandoned LoopState");
+        //Debug.Log(owner + " abandoned LoopState");
     }
 }
 
