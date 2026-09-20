@@ -1262,8 +1262,8 @@ MonoBehaviour:
     enemiesRequired: 0
   - _zones:
     - {fileID: 2080809798494589140, guid: 30eae1536380c084dae4a8800e65a2f7, type: 3}
-    requiresCondition: 0
-    enemiesRequired: 0
+    requiresCondition: 1
+    enemiesRequired: 1
   _speed: 3
   _camera: {fileID: 519420031}
 --- !u!4 &1810501453
