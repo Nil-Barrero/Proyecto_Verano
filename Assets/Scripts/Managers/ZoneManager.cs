@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -99,6 +98,7 @@ public class ZoneManager : MonoBehaviour
         Zone instance = Instantiate(prefab, new Vector3((x + (prefab._width/2f)), 0f, 0f), Quaternion.identity,this.transform);
         //La variable para deshabilitar enemigos dependera de si el prefab ya ha sido incluido en la HashSet
         instance._disabledEnemies = !_usedZones.Add(prefab);
+        Debug.Log(instance._disabledEnemies);
         instance.ResetZone();
         _activeZones.Add(instance);
     }
