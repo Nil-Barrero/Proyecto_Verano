@@ -142,7 +142,7 @@ MonoBehaviour:
     b: {fileID: 0}
   prepearingState:
     b: {fileID: 0}
-    timeToShoot: 5
+    timeToShoot: 1
     patrolSpeed: 2
     patrolFrequency: 3
   shootingState:
@@ -260,4 +260,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

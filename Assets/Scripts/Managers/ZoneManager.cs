@@ -1,6 +1,6 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZoneManager : MonoBehaviour
 {
@@ -75,7 +75,9 @@ public class ZoneManager : MonoBehaviour
             _waveIndex++;
             _zonesIndex = 0;
 
-            if(_waveIndex >= _waves.Count)
+            Debug.Log("_waveIndex = " + _waveIndex);
+            Debug.Log("_waves.Count = " + _waves.Count);
+            if(_waveIndex == _waves.Count)
             {
                 //End of level
                 //Como no hay final de momento lo único que hace es repetir de forma perpetua la última zona :p
@@ -96,11 +98,20 @@ public class ZoneManager : MonoBehaviour
         Zone instance = Instantiate(prefab, new Vector3((x + (prefab._width/2f)), 0f, 0f), Quaternion.identity,this.transform);
         //La variable para deshabilitar enemigos dependera de si el prefab ya ha sido incluido en la HashSet
         instance._disabledEnemies = !_usedZones.Add(prefab);
+        Debug.Log(instance._disabledEnemies);
         instance.ResetZone();
         _activeZones.Add(instance);
     }
 
-    public void NextWave() { _canAdvance = true; }
+    public void NextWave()
+    {
+        if(_waveIndex + 1 >= _waves.Count)
+        {
+            SceneManager.LoadScene(0);
+            return;
+        }
+        _canAdvance = true;
+    }
 
     public short GetWaveEnemiesRequired() { return _waves[_waveIndex].enemiesRequired; }
 }

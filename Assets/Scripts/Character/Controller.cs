@@ -1,7 +1,9 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Character
 {
@@ -14,6 +16,7 @@ namespace Character
         [SerializeField] private Transform groundManager;
         [SerializeField] private Vector2 groundBoxSize;
         [SerializeField] private float KnockbackForce;
+        [SerializeField] private float invencibilityTime;
         [SerializeField] private LayerMask KnockbackLayer;
         private HealthBehaviour healthBehaviour;
 
@@ -37,38 +40,41 @@ namespace Character
 
 
         private void Awake()
-    {
-        instance = this;
-    }
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        healthBehaviour = GetComponent<HealthBehaviour>();
-    }
-
-    private void Update()
-    {
-        move = Input.GetAxisRaw("Horizontal") * moveVelocity;
-        isGrounded = Physics2D.OverlapBox(groundManager.position, groundBoxSize, 0.0f, layer);
-
-        AimMouse();
-
-        if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            instance = this;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        private void Start()
         {
-            Jump();
+            rb = GetComponent<Rigidbody2D>();
+            healthBehaviour = GetComponent<HealthBehaviour>();
+
+            healthBehaviour.OnAlterLifes.AddListener(OnLifesAlterate);
+            healthBehaviour.OnAlterHealth.AddListener(OnHealthAlterate);
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        private void Update()
         {
-            healthBehaviour.Damage(1);
+            move = Input.GetAxisRaw("Horizontal") * moveVelocity;
+            isGrounded = Physics2D.OverlapBox(groundManager.position, groundBoxSize, 0.0f, layer);
+
+            AimMouse();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Shoot();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                healthBehaviour.Damage(1);
+            }
         }
-    }
 
         private void FixedUpdate()
         {
@@ -100,8 +106,8 @@ namespace Character
             GameObject bullet = PoolingManager.instance.GetInstanceOfClass("Bullet");
             bullet.transform.position = bulletSpawn.position;
             bullet.transform.rotation = bulletSpawn.rotation;
+           // Debug.Log(bullet.transform.rotation);
             bullet.SetActive(true);
-            bullet.GetComponent<Bullet>().spawner = this.gameObject;
             bullet.GetComponent<Bullet>().SetLayer("PlayerBullet");
         }
         private void OnDrawGizmos()
@@ -112,24 +118,45 @@ namespace Character
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Knockback(collision.gameObject);
+            ContactPoint2D contact = collision.GetContact(0);  
+            Knockback(collision.gameObject, contact.normal);
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Knockback(collision.gameObject);
+            Vector2 direction = this.transform.position - collision.transform.position;
+            Knockback(collision.gameObject, direction);
         }
 
-        void Knockback(GameObject other)
+        void Knockback(GameObject other, Vector2 dir)
         {
-            //Activar cuando el jugador tenga vida
-            //if (GetComponent<HealthBehaviour>().IsInvincible()) return;
+            if (GetComponent<HealthBehaviour>().IsInvincible()) return;
 
             if (((1 << other.gameObject.layer) & KnockbackLayer) != 0)
             {
                 rb.linearVelocity = Vector2.zero;
-                Vector2 direction = this.transform.position - other.transform.position;
+
+                Vector2 direction;
+                if (Mathf.Abs(dir.normalized.y) > 0.7f)
+                {
+                    float side = transform.position.x >= other.transform.position.x ? 1 : -1;
+                    //La latura esta harcodeada para que empieze un poco más arriba
+                    direction = new Vector2(side, 0.3f);
+                }
+                else
+                    direction = dir;
+
                 rb.AddForce(direction.normalized * KnockbackForce, ForceMode2D.Impulse);
             }
+        }
+        private void OnLifesAlterate(int lifes, int prevLifes)
+        {
+            if(lifes <= 0)
+                SceneManager.LoadScene(0);
+        }
+
+        private void OnHealthAlterate(int health, int maxHealth, int prevHealth, int prevMaxHealth)
+        {
+            healthBehaviour.SetInvincibility(invencibilityTime);
         }
     }  
 }

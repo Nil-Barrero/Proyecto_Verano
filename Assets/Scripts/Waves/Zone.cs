@@ -51,7 +51,7 @@ public class Zone : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _width = terrain.size.x;
+        //_width = terrain.size.x;
         _height = terrain.size.y;
     }
 
